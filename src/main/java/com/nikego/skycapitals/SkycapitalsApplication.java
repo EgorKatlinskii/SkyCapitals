@@ -8,5 +8,6 @@ public class SkycapitalsApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SkycapitalsApplication.class, args);
+
     }
 }
