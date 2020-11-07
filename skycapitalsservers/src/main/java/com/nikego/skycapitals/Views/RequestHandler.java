@@ -1,4 +1,4 @@
-package Views;
+package com.nikego.skycapitals.Views;
 
 import controlers.ControlerUserAccount;
 
