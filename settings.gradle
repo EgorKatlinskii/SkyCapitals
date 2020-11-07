@@ -1,2 +1,2 @@
-include ':skycapitalsmobile'
+include ':skycapitalsmobile','skycapitalsservers'
 rootProject.name = 'skycapitals'
