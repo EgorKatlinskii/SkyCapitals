@@ -25,6 +25,8 @@ bin/
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
+/skycapitalsmobile/libs/
+local.properties
 
 ### NetBeans ###
 /nbproject/private/
