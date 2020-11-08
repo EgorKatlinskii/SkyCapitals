@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/authFragment"
-        android:name="com.nvvi9.skycapitalsmobile.ui.fragments.AuthFragment"
+        android:name="com.nikego.skycapitals.ui.fragments.AuthFragment"
         android:label="AuthFragment"
         tools:layout="@layout/fragment_auth" />
 </navigation>
