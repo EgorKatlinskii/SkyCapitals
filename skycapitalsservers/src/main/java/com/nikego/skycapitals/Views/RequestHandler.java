@@ -1,11 +1,15 @@
 package com.nikego.skycapitals.Views;
 
-import controlers.ControlerUserAccount;
+import com.nikego.skycapitals.controlers.ControlerUserAccount;
 
 public class RequestHandler {
     private ControlerUserAccount controlerUserAccount;
 
-    public RequestHandler() {
+
+
+    /*public RequestHandler() {
 
     }
+    */
+
 }
