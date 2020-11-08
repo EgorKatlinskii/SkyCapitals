@@ -8,12 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.nikego.skycapitals.databinding.FragmentRegistrationBinding
-import com.nikego.skycapitals.di.Injectable
 import com.nikego.skycapitals.ui.viewmodels.RegistrationViewModel
 import javax.inject.Inject
 
 
-class RegistrationFragment : Fragment(), Injectable {
+class RegistrationFragment : Fragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
