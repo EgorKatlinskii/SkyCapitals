@@ -9,7 +9,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.nvvi9.katlinskiycapitals"
+        applicationId "com.nikego.skycapitals"
         minSdkVersion 19
         targetSdkVersion 30
         versionCode 1

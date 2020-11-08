@@ -1,4 +1,4 @@
-<resources xmlns="http://www.springframework.org/schema/mvc">
+<resources>
     <string name="app_name">SkyCapitals E-Bank</string>
     <string name="email">Email</string>
     <string name="log_in">Log In</string>
