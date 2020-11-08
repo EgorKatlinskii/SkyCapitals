@@ -1,6 +1,6 @@
 package com.nikego.skycapitals.services;
 
-import com.nikego.skycapitals.Models.UserAccount;
+import com.nikego.skycapitals.Models.User;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ public interface UserService {
          * @param client - клиент для создания
          */
 
-        void create(UserAccount client);
+        void create(User client);
 
 
         /**
@@ -18,7 +18,7 @@ public interface UserService {
          * @return список клиентов
          */
 
-        List<UserAccount> readAll();
+        List<User> readAll();
 
 
         /**
@@ -27,7 +27,7 @@ public interface UserService {
          * @return - объект клиента с заданным ID
          */
 
-        UserAccount read(int id);
+        User read(int id);
 
 
         /**
@@ -38,7 +38,7 @@ public interface UserService {
          * @return - true если данные были обновлены, иначе false
          */
 
-        boolean update(UserAccount client, int id);
+        boolean update(User client, int id);
 
 
         /**

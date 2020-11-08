@@ -13,28 +13,27 @@ public class UserServiceImp implements com.nikego.skycapitals.services.UserServi
         this.userRepository=userRepository;
     }
     @Override
-    public void create(UserAccount client) {
+    public void create(User client) {
         userRepository.save(client);
     }
 
     @Override
-    public List<UserAccount> readAll() {
+    public List<User> readAll() {
         return userRepository.findAll();
     }
 
     @Override
-    public UserAccount read(int id) {
+    public User read(int id) {
         return userRepository.getOne(id);
     }
 
     @Override
-    public boolean update(UserAccount userAccount, int id) {
+    public boolean update(User userAccount, int id) {
         if (userRepository.existsById(id)) {
             userAccount.setUserId(id);
             userRepository.save(userAccount);
             return true;
         }
-
         return false;
     }
 
