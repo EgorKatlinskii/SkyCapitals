@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/authFragment">
 
     <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.nvvi9.skycapitalsmobile.ui.fragments.LoginFragment"
-        android:label="LoginFragment"
-        tools:layout="@layout/fragment_login" />
+        android:id="@+id/authFragment"
+        android:name="com.nvvi9.skycapitalsmobile.ui.fragments.AuthFragment"
+        android:label="AuthFragment"
+        tools:layout="@layout/fragment_auth" />
 </navigation>

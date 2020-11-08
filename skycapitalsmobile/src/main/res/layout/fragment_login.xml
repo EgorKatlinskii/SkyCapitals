@@ -2,38 +2,65 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
+        tools:context=".LoginFragment">
 
         <EditText
             android:id="@+id/email"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:hint="@string/email" />
+            android:layout_height="50dp"
+            android:layout_above="@id/password"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/et_custom"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:padding="15dp"
+            android:textSize="15sp" />
 
         <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/et_custom"
             android:hint="@string/password"
             android:inputType="textPassword"
-            tools:text="password" />
+            android:padding="15dp"
+            android:textSize="15sp" />
 
         <Button
-            android:id="@+id/login_button"
-            android:layout_width="wrap_content"
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/log_in" />
+            android:layout_below="@id/password"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/btn_custom"
+            android:text="@string/log_in"
+            android:textColor="@android:color/white" />
 
-        <Button
-            android:id="@+id/register_button"
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_above="@id/swipeRight"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_arrow_right" />
+
+        <TextView
+            android:id="@+id/swipeRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/registration" />
-    </LinearLayout>
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:text="@string/swipe_left_to_register"
+            android:textSize="15sp" />
+    </RelativeLayout>
 </layout>

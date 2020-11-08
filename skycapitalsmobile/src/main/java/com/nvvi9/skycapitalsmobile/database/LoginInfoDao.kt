@@ -11,7 +11,7 @@ import com.nvvi9.skycapitalsmobile.data.LoginInfo
 interface LoginInfoDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun replace(loginInfo: LoginInfo)
+    suspend fun addUser(loginInfo: LoginInfo)
 
     @Query("SELECT * FROM LoginInfo")
     suspend fun getUsers(): List<LoginInfo>

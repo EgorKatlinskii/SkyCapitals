@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.nvvi9.skycapitalsmobile.database.LoginDatabase
 import dagger.Module
 import dagger.Provides
+import kotlinx.coroutines.Dispatchers
 import javax.inject.Singleton
 
 
@@ -21,4 +22,7 @@ class AppModule {
     @Provides
     fun provideLoginDao(database: LoginDatabase) =
             database.loginInfoDao
+
+    @Provides
+    fun provideIODispatcher() = Dispatchers.IO
 }

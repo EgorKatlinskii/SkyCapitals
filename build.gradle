@@ -58,3 +58,11 @@ allprojects {
 		jcenter()
 	}
 }
+
+bootJar {
+	enabled = false
+}
+
+jar {
+	enabled = true
+}

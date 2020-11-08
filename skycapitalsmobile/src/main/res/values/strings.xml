@@ -1,7 +1,14 @@
-<resources>
+<resources xmlns="http://www.springframework.org/schema/mvc">
     <string name="app_name">SkyCapitals E-Bank</string>
     <string name="email">Email</string>
-    <string name="password">Password</string>
     <string name="log_in">Log In</string>
     <string name="registration">Registration</string>
+    <string name="register">Register</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="password">Password</string>
+    <string name="full_name">Full name</string>
+    <string name="repeat_password">Repeat password</string>
+    <string name="swipe_left_to_register">Swipe left to register</string>
+    <string name="swipe_right_for_login">Swipe right for login</string>
 </resources>
