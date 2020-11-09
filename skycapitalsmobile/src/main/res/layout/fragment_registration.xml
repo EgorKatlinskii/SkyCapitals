@@ -17,14 +17,27 @@
             tools:context=".RegisterFragment">
 
             <EditText
-                android:id="@+id/full_name"
+                android:id="@+id/first_name"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/et_custom"
-                android:hint="@string/full_name"
+                android:hint="@string/first_name"
+                android:inputType="textPersonName"
+                android:padding="15dp"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/last_name"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/et_custom"
+                android:hint="@string/last_name"
                 android:inputType="textPersonName"
                 android:padding="15dp"
                 android:textSize="15sp" />
@@ -82,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/btn_custom"
                 android:text="@string/register"
                 android:textColor="@android:color/white" />

@@ -1,18 +1,23 @@
 package com.nikego.skycapitals.Models;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@Table (name="User Account")
+@Table (name="test_tbl")
 public class User {
     @Id @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name="id")
     private  Integer userId;
-    @Column(name="User Name")
+    @Column(name="user_name")
     private String userName;
-    @Column(name="User Surname")
+    @Column(name="user_surname")
     private String userSurname;
-    @Column(name="Ost Office")
+    @Column(name="ost_office")
     private String ostOffice;
 
     public int getUserId() {
