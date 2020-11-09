@@ -1,6 +1,6 @@
 package com.nikego.skycapitals.services;
 
-import com.nikego.skycapitals.Models.User;
+import com.nikego.skycapitals.models.User;
 
 import java.util.List;
 

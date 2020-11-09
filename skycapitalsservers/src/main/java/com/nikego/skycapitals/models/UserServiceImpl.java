@@ -1,22 +1,21 @@
-package com.nikego.skycapitals.Models;
+package com.nikego.skycapitals.models;
 
-import com.nikego.skycapitals.Repository.UserRepository;
+import com.nikego.skycapitals.repository.UserRepository;
 import com.nikego.skycapitals.services.UserService;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class UserServiceImp implements UserService {
+public class UserServiceImpl implements UserService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-//    private UserServiceImp(UserRepository userRepository){
-//        this.userRepository=userRepository;
-//    }
+    public UserServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
     @Override
     public void create(User client) {
         userRepository.save(client);

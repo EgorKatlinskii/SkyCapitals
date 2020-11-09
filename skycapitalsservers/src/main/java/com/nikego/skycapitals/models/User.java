@@ -1,4 +1,4 @@
-package com.nikego.skycapitals.Models;
+package com.nikego.skycapitals.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

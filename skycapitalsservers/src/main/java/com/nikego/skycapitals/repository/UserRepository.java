@@ -1,7 +1,8 @@
-package com.nikego.skycapitals.Repository;
+package com.nikego.skycapitals.repository;
 
 
-import com.nikego.skycapitals.Models.User;
+import com.nikego.skycapitals.models.User;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
