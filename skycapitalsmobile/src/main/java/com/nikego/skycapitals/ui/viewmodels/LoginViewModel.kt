@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nikego.skycapitals.data.LoadState
-import com.nikego.skycapitals.data.LoginInfo
 import com.nikego.skycapitals.repositories.base.LoginRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
@@ -23,7 +22,12 @@ class LoginViewModel @Inject constructor(
     fun login(email: String, password: String) {
         viewModelScope.launch(ioDispatcher) {
             _loginState.postValue(LoadState.Loading)
-            _loginState.postValue(if (loginRepository.login(LoginInfo(email, password))) LoadState.Success else LoadState.Error)
+            if (loginRepository.login(email, password)) {
+                _loginState.postValue(LoadState.Success)
+            } else {
+                _loginState.postValue(LoadState.Error)
+            }
         }
     }
+
 }

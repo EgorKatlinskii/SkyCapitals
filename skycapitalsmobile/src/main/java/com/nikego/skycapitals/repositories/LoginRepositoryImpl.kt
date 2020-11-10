@@ -12,10 +12,10 @@ class LoginRepositoryImpl @Inject constructor(private val loginDataSource: Login
     override suspend fun addUser(loginInfo: LoginInfo): Boolean =
             loginDataSource.addLoginInfo(loginInfo)
 
-    override suspend fun login(loginInfo: LoginInfo): Boolean =
-            getUsers().run {
+    override suspend fun login(email: String, password: String): Boolean =
+            loginDataSource.getLoginInfo(email).run {
                 when (this) {
-                    is Result.Success -> data.contains(loginInfo)
+                    is Result.Success -> data?.password == password
                     is Result.Error -> false
                 }
             }

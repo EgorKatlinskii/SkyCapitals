@@ -79,6 +79,16 @@
                 android:inputType="textPassword"
                 android:padding="15dp"
                 android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/alert_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Passwords don't match"
+                android:textColor="@android:color/holo_red_dark"
+                android:visibility="gone" />
         </LinearLayout>
 
         <LinearLayout

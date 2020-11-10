@@ -13,6 +13,12 @@ interface LoginInfoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addUser(loginInfo: LoginInfo)
 
+    @Query("SELECT email FROM LoginInfo")
+    suspend fun getEmails(): List<String>
+
+    @Query("SELECT * FROM LoginInfo WHERE email =:email")
+    suspend fun getLoginInfo(email: String): LoginInfo?
+
     @Query("SELECT * FROM LoginInfo")
     suspend fun getUsers(): List<LoginInfo>
 }

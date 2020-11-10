@@ -10,4 +10,12 @@
         android:name="com.nikego.skycapitals.ui.fragments.AuthFragment"
         android:label="AuthFragment"
         tools:layout="@layout/fragment_auth" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.nikego.skycapitals.ui.fragments.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home" />
+    <action
+        android:id="@+id/action_global_homeFragment"
+        app:destination="@id/homeFragment" />
 </navigation>

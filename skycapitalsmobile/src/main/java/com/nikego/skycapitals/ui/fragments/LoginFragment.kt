@@ -7,15 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.nikego.skycapitals.R
+import com.nikego.skycapitals.data.LoadState
 import com.nikego.skycapitals.databinding.FragmentLoginBinding
 import com.nikego.skycapitals.ui.viewmodels.LoginViewModel
-import javax.inject.Inject
 
 
-class LoginFragment : Fragment() {
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+class LoginFragment(viewModelFactory: ViewModelProvider.Factory) : Fragment() {
 
     private val loginViewModel: LoginViewModel by viewModels {
         viewModelFactory
@@ -24,7 +23,17 @@ class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = FragmentLoginBinding.inflate(inflater)
+        binding = FragmentLoginBinding.inflate(inflater).apply {
+            btnLogin.setOnClickListener {
+                loginViewModel.login(loginEmail.text.toString(), loginPassword.text.toString())
+            }
+        }
+
+        loginViewModel.loginState.observe(viewLifecycleOwner) {
+            if (it is LoadState.Success) {
+                findNavController().navigate(R.id.action_global_homeFragment)
+            }
+        }
         return binding.root
     }
 }
