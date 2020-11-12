@@ -1,6 +1,7 @@
 package com.nikego.skycapitals.di.modules
 
-import com.nikego.skycapitals.database.LoginDataSource
+import com.nikego.skycapitals.database.AccountDataSource
+import com.nikego.skycapitals.database.BankCardDataSource
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -9,5 +10,8 @@ import dagger.android.ContributesAndroidInjector
 abstract class DataSourceModule {
 
     @ContributesAndroidInjector
-    abstract fun contributeLoginDataSource(): LoginDataSource
+    abstract fun contributeLoginDataSource(): AccountDataSource
+
+    @ContributesAndroidInjector
+    abstract fun contributeBankCardDataSource(): BankCardDataSource
 }

@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.nikego.skycapitals.data.LoadState
+import com.nikego.skycapitals.data.datatype.LoadState
 import com.nikego.skycapitals.repositories.base.LoginRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
@@ -29,5 +29,4 @@ class LoginViewModel @Inject constructor(
             }
         }
     }
-
 }

@@ -1,4 +1,4 @@
-package com.nikego.skycapitals.data
+package com.nikego.skycapitals.data.datatype
 
 
 sealed class Result<out T> {

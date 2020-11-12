@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.nikego.skycapitals.data.LoadState
-import com.nikego.skycapitals.data.LoginInfo
+import com.nikego.skycapitals.data.Account
+import com.nikego.skycapitals.data.datatype.LoadState
 import com.nikego.skycapitals.repositories.base.LoginRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
@@ -24,7 +24,7 @@ class RegistrationViewModel @Inject constructor(
     fun register(email: String, firstName: String, lastName: String, password: String) {
         viewModelScope.launch(ioDispatcher) {
             _loadState.postValue(LoadState.Loading)
-            if (loginRepository.addUser(LoginInfo(UUID.randomUUID().toString(), email, firstName, lastName, password))) {
+            if (loginRepository.addUser(Account(UUID.randomUUID().toString(), email, firstName, lastName, password))) {
                 _loadState.postValue(LoadState.Success)
             } else {
                 _loadState.postValue(LoadState.Error)

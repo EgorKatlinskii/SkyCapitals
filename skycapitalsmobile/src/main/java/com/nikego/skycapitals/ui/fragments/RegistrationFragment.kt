@@ -11,7 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.nikego.skycapitals.R
-import com.nikego.skycapitals.data.LoadState
+import com.nikego.skycapitals.data.datatype.LoadState
 import com.nikego.skycapitals.databinding.FragmentRegistrationBinding
 import com.nikego.skycapitals.ui.viewmodels.RegistrationViewModel
 
@@ -26,10 +26,8 @@ class RegistrationFragment(viewModelFactory: ViewModelProvider.Factory) : Fragme
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentRegistrationBinding.inflate(inflater).apply {
-            repeatPassword.run {
-                addTextChangedListener {
-                    visibility = if (it == password.text) View.GONE else View.VISIBLE
-                }
+            repeatPassword.addTextChangedListener {
+                alertMessage.visibility = if (it.toString() == password.text.toString()) View.GONE else View.VISIBLE
             }
 
             btnRegister.setOnClickListener {
