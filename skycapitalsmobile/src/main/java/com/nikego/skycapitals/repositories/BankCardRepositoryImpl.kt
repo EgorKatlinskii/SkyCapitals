@@ -2,6 +2,7 @@ package com.nikego.skycapitals.repositories
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.lifecycle.LiveData
 import com.nikego.skycapitals.data.BankCard
 import com.nikego.skycapitals.data.datatype.Result
 import com.nikego.skycapitals.database.AccountDataSource
@@ -37,7 +38,7 @@ class BankCardRepositoryImpl @Inject constructor(
                 }
             }
 
-    override suspend fun getBankCards(accountId: String): Result<List<BankCard>> =
+    override suspend fun getBankCards(accountId: String): LiveData<List<BankCard>> =
             bankCardDataSource.getBankCards(accountId)
 
     override suspend fun updateBalance(cardId: String, addedCash: Double): Boolean =

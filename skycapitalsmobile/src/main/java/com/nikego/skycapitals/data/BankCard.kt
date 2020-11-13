@@ -1,9 +1,6 @@
 package com.nikego.skycapitals.data
 
-import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.Index
-import androidx.room.PrimaryKey
+import androidx.room.*
 
 
 @Entity(indices = [Index(value = ["cardId"], unique = true)],
@@ -17,7 +14,7 @@ import androidx.room.PrimaryKey
 )
 data class BankCard(
         @PrimaryKey val cardId: String,
-        val cardHolderId: String,
+        @ColumnInfo(index = true) val cardHolderId: String,
         val cardHolderName: String,
         val expireTimeMillis: Long,
         var balance: Double = .0

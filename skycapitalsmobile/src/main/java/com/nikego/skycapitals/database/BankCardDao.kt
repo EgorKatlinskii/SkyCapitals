@@ -1,5 +1,6 @@
 package com.nikego.skycapitals.database
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.nikego.skycapitals.data.BankCard
 
@@ -14,7 +15,10 @@ interface BankCardDao {
     suspend fun updateBankCard(vararg bankCard: BankCard)
 
     @Query("SELECT * FROM BankCard WHERE cardHolderId=:accountId")
-    suspend fun getBankCards(accountId: String): List<BankCard>
+    suspend fun getBankCardList(accountId: String): List<BankCard>
+
+    @Query("SELECT * FROM BankCard WHERE cardHolderId=:accountId")
+    suspend fun getBankCards(accountId: String): LiveData<List<BankCard>>
 
     @Query("SELECT * FROM BankCard WHERE cardId=:cardId")
     suspend fun getBankCardById(cardId: String): BankCard?

@@ -23,14 +23,17 @@ class BankCardDataSource @Inject constructor(private val bankCardDao: BankCardDa
                 false
             }
 
-    suspend fun getBankCards(accountId: String) =
+    suspend fun getBankCardList(accountId: String) =
             try {
-                bankCardDao.getBankCards(accountId).let {
+                bankCardDao.getBankCardList(accountId).let {
                     Result.Success(it)
                 }
             } catch (t: Throwable) {
                 Result.Error(t)
             }
+
+    suspend fun getBankCards(accountId: String) =
+            bankCardDao.getBankCards(accountId)
 
     suspend fun getBankCardById(cardId: String) =
             try {
