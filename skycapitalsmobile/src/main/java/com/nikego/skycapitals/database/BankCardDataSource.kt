@@ -5,7 +5,10 @@ import com.nikego.skycapitals.data.datatype.Result
 import javax.inject.Inject
 
 
-class BankCardDataSource @Inject constructor(private val bankCardDao: BankCardDao) {
+class BankCardDataSource @Inject constructor(
+        private val bankCardDao: BankCardDao,
+        private val accountWithCardsDao: AccountWithCardsDao
+) {
 
     suspend fun addBankCard(vararg bankCard: BankCard) =
             try {
@@ -25,15 +28,15 @@ class BankCardDataSource @Inject constructor(private val bankCardDao: BankCardDa
 
     suspend fun getBankCardList(accountId: String) =
             try {
-                bankCardDao.getBankCardList(accountId).let {
+                accountWithCardsDao.getAccountWithCards(accountId).let {
                     Result.Success(it)
                 }
             } catch (t: Throwable) {
                 Result.Error(t)
             }
 
-    suspend fun getBankCards(accountId: String) =
-            bankCardDao.getBankCards(accountId)
+    fun getBankCards(accountId: String) =
+            accountWithCardsDao.getAccountWithCardsLiveData(accountId)
 
     suspend fun getBankCardById(cardId: String) =
             try {

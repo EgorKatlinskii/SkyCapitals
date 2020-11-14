@@ -11,4 +11,5 @@ abstract class EBankDatabase : RoomDatabase() {
 
     abstract val accountDao: AccountDao
     abstract val bankCardDao: BankCardDao
+    abstract val accountWithCardsDao: AccountWithCardsDao
 }

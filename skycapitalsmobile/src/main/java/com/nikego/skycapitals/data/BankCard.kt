@@ -1,17 +1,12 @@
 package com.nikego.skycapitals.data
 
-import androidx.room.*
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.Index
+import androidx.room.PrimaryKey
 
 
-@Entity(indices = [Index(value = ["cardId"], unique = true)],
-        foreignKeys = [
-            ForeignKey(
-                    entity = Account::class,
-                    parentColumns = ["accountId"],
-                    childColumns = ["cardHolderId"]
-            )
-        ]
-)
+@Entity(indices = [Index(value = ["cardId"], unique = true)])
 data class BankCard(
         @PrimaryKey val cardId: String,
         @ColumnInfo(index = true) val cardHolderId: String,

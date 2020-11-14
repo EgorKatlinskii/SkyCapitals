@@ -28,5 +28,9 @@ class AppModule {
             database.bankCardDao
 
     @Provides
+    fun provideAccountWithCardsDao(database: EBankDatabase) =
+            database.accountWithCardsDao
+
+    @Provides
     fun provideIODispatcher() = Dispatchers.IO
 }
