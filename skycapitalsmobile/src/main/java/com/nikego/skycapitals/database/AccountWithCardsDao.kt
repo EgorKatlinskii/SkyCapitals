@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Transaction
-import com.nikego.skycapitals.AccountWithCards
+import com.nikego.skycapitals.data.AccountWithCards
 
 
 @Dao

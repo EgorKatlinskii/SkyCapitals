@@ -12,5 +12,6 @@ data class BankCard(
         @ColumnInfo(index = true) val cardHolderId: String,
         val cardHolderName: String,
         val expireTimeMillis: Long,
+        val currency: Currency,
         var balance: Double = .0
 )

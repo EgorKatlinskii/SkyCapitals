@@ -3,6 +3,7 @@ package com.nikego.skycapitals.repositories
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import com.nikego.skycapitals.data.BankCard
+import com.nikego.skycapitals.data.Currency
 import com.nikego.skycapitals.data.datatype.Result
 import com.nikego.skycapitals.database.AccountDataSource
 import com.nikego.skycapitals.database.BankCardDataSource
@@ -16,7 +17,7 @@ class BankCardRepositoryImpl @Inject constructor(
         private val bankCardDataSource: BankCardDataSource
 ) : BankCardRepository {
 
-    override suspend fun addBankCard(accountId: String, expireDate: String): Boolean =
+    override suspend fun addBankCard(accountId: String, currency: Currency): Boolean =
             accountDataSource.getAccountById(accountId).run {
                 when (this) {
                     is Result.Success -> data?.run {
@@ -27,7 +28,8 @@ class BankCardRepositoryImpl @Inject constructor(
                                         "$lastName $firstName".toUpperCase(),
                                         Calendar.getInstance().apply {
                                             add(Calendar.YEAR, 2)
-                                        }.timeInMillis
+                                        }.timeInMillis,
+                                        currency
                                 )
                         )
                         true

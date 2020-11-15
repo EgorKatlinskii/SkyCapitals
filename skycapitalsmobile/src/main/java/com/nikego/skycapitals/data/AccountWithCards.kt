@@ -1,9 +1,7 @@
-package com.nikego.skycapitals
+package com.nikego.skycapitals.data
 
 import androidx.room.Embedded
 import androidx.room.Relation
-import com.nikego.skycapitals.data.Account
-import com.nikego.skycapitals.data.BankCard
 
 
 data class AccountWithCards(
