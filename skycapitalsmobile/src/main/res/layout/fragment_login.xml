@@ -1,66 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="?attr/colorPrimarySurface"
+        android:theme="@style/EBank.Blue"
         tools:context=".LoginFragment">
 
-        <EditText
-            android:id="@+id/login_email"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_above="@id/login_password"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/et_custom"
-            android:hint="@string/email"
-            android:inputType="textEmailAddress"
-            android:padding="15dp"
-            android:textSize="15sp" />
-
-        <EditText
-            android:id="@+id/login_password"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_centerInParent="true"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/et_custom"
-            android:hint="@string/password"
-            android:inputType="textPassword"
-            android:padding="15dp"
-            android:textSize="15sp" />
-
-        <Button
-            android:id="@+id/btn_login"
+        <TextView
+            android:id="@+id/sky_capitals_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/login_password"
+            android:gravity="end"
+            android:text="@string/skycapitals"
+            android:textColor="?attr/colorOnPrimary"
+            android:textAppearance="?attr/textAppearanceHeadline3"
+            android:paddingHorizontal="10dp"
+            app:layout_constraintBottom_toTopOf="@id/ebank_text"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/ebank_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="@string/ebank"
+            android:textColor="?attr/colorOnPrimary"
+            android:textAppearance="?attr/textAppearanceHeadline4"
+            android:paddingHorizontal="10dp"
+            app:layout_constraintBottom_toTopOf="@id/login_info_container"
+            app:layout_constraintTop_toBottomOf="@id/sky_capitals_text" />
+
+        <LinearLayout
+            android:id="@+id/login_info_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="15dp"
             android:layout_marginRight="20dp"
-            android:background="@drawable/btn_custom"
-            android:text="@string/log_in"
-            android:textColor="@android:color/white" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <EditText
+                android:id="@+id/login_email"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/rounded_frame"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:padding="15dp"
+                android:textAppearance="?attr/textAppearanceSubtitle1"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/login_password"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rounded_frame"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:padding="15dp"
+                android:textAppearance="?attr/textAppearanceSubtitle1"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="?attr/colorSecondary"
+                android:background="@drawable/rounded_frame"
+                android:text="@string/log_in"
+                tools:backgroundTint="?attr/colorSecondary" />
+        </LinearLayout>
 
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_above="@id/swipeRight"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/ic_arrow_right" />
+            android:src="@drawable/ic_arrow_right"
+            app:layout_constraintBottom_toTopOf="@id/swipe_right"
+            app:layout_constraintEnd_toEndOf="@id/swipe_right"
+            app:layout_constraintStart_toStartOf="@id/swipe_right"
+            app:tint="?attr/colorOnPrimary" />
 
         <TextView
-            android:id="@+id/swipeRight"
+            android:id="@+id/swipe_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
             android:layout_marginBottom="20dp"
+            android:textColor="?attr/colorOnPrimary"
             android:text="@string/swipe_left_to_register"
-            android:textSize="15sp" />
-    </RelativeLayout>
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -25,7 +25,7 @@ class BankCardRepositoryImpl @Inject constructor(
                                 BankCard(
                                         UUID.randomUUID().toString(),
                                         accountId,
-                                        "$lastName $firstName".toUpperCase(),
+                                        "$lastName $firstName".toUpperCase(Locale.getDefault()),
                                         Calendar.getInstance().apply {
                                             add(Calendar.YEAR, 2)
                                         }.timeInMillis,

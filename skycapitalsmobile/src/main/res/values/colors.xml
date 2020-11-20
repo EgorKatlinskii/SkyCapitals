@@ -7,4 +7,20 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!--theme colors-->
+    <color name="ebank_yellow_200">#ffeb46</color>
+    <color name="ebank_yellow_400">#ffc000</color>
+    <color name="ebank_yellow_500">#ffde03</color>
+    <color name="ebank_yellow_dark_primary">#242316</color>
+
+    <color name="ebank_blue_200">#91a4fc</color>
+    <color name="ebank_blue_700">#0336ff</color>
+    <color name="ebank_blue_800">#0035c9</color>
+    <color name="ebank_blue_dark_primary">#1c1d24</color>
+
+    <color name="ebank_pink_200">#ff7597</color>
+    <color name="ebank_pink_500">#ff0266</color>
+    <color name="ebank_pink_600">#d8004d</color>
+    <color name="ebank_pink_dark_primary">#24191c</color>
 </resources>

@@ -12,10 +12,12 @@ import com.nikego.skycapitals.ui.adapters.EntryPagerAdapter
 import javax.inject.Inject
 
 
-class AuthFragment : Fragment(), Injectable {
+class AuthFragment @Inject constructor(
+        private val viewModelFactory: ViewModelProvider.Factory
+) : Fragment(), Injectable {
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+//    @Inject
+//    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private lateinit var binding: FragmentAuthBinding
 

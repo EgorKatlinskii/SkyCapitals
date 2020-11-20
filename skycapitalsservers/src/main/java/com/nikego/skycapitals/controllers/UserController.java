@@ -2,6 +2,7 @@ package com.nikego.skycapitals.controllers;
 
 import com.nikego.skycapitals.models.User;
 import com.nikego.skycapitals.models.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,9 +14,12 @@ public class UserController {
 
     private final UserService userService;
 
-    public UserController(UserService userService) { this.userService = userService; }
+    @Autowired
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
-    @GetMapping(value = "/users",consumes = "application/json")
+    @GetMapping(value = "/users", consumes = "application/json", produces = "application/json")
     @ResponseBody
     public ResponseEntity<List<User>> readAll() {
         final List<User> users = userService.readAll();
@@ -25,32 +29,32 @@ public class UserController {
                 : ResponseEntity.status(HttpStatus.NOT_FOUND).body(users);
     }
 
-    @PostMapping(value="/create",consumes = "application/json")
+    @PostMapping(value = "/create")
     @ResponseBody
-    public ResponseEntity<String> create (@RequestBody User user){
+    public ResponseEntity<String> create(@RequestBody User user) {
         userService.create(user);
         return ResponseEntity.status(HttpStatus.CREATED).body("Аккаунт успешно создан!");
     }
 
-    @GetMapping(value="/users/{userId}",consumes = "application/json")
+    @GetMapping(value = "/users/{userId}", consumes = "application/json")
     @ResponseBody
-    public ResponseEntity<String> read(@RequestBody int id){
-        final User user =userService.read(id);
+    public ResponseEntity<String> read(@RequestBody int id) {
+        final User user = userService.read(id);
         return user != null
-                ?ResponseEntity.status(HttpStatus.OK).body("Успешно получено!"+ user)
-                :new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+                ? ResponseEntity.status(HttpStatus.OK).body("Успешно получено!" + user)
+                : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @GetMapping(value="/users/update/{userId}",consumes = "application/json")
+    @GetMapping(value = "/users/update/{userId}", consumes = "application/json")
     @ResponseBody
-    public ResponseEntity<String>update (@RequestBody User user,@PathVariable int userId){
-        userService.update(user,userId);
+    public ResponseEntity<String> update(@RequestBody User user, @PathVariable int userId) {
+        userService.update(user, userId);
         return ResponseEntity.status(HttpStatus.OK).body("Успешно!");
     }
 
-    @PostMapping(value ="/delete",consumes = "application/json")
+    @PostMapping(value = "/delete", consumes = "application/json")
     @ResponseBody
-    public ResponseEntity<String> delete (@RequestBody int id){
+    public ResponseEntity<String> delete(@RequestBody int id) {
         userService.delete(id);
         return ResponseEntity.status(HttpStatus.OK).body("Успешно удалено!");
     }

@@ -3,13 +3,14 @@ package com.nikego.skycapitals.data
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import com.squareup.moshi.Json
 
 
 @Entity(indices = [Index(value = ["accountId", "email"], unique = true)])
 data class Account(
-        @PrimaryKey val accountId: String,
-        val email: String,
-        val firstName: String,
-        val lastName: String,
-        val password: String
+        @PrimaryKey @field:Json(name = "userId") val accountId: String,
+        @field:Json(name = "ostOffice") val email: String,
+        @field:Json(name = "userName") val firstName: String,
+        @field:Json(name = "userSurname") val lastName: String,
+        @field:Json(name = "userPassword") val password: String
 )

@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.Skycapitals" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Primary brand color. -->
@@ -7,4 +7,77 @@
         <item name="colorAccent">@color/teal_200</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <!--Base theme, all common styling here-->
+    <style name="Base.EBank" parent="@style/Theme.MaterialComponents.DayNight.NoActionBar">
+
+        <!--Material shape attributes-->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.EBank.SmallComponent
+        </item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.EBank.MediumComponent
+        </item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.EBank.LargeComponent
+        </item>
+
+        <!--Material type attributes-->
+        <item name="textAppearanceHeadline1">@style/TextAppearance.EBank.Headline1</item>
+        <item name="textAppearanceHeadline2">@style/TextAppearance.EBank.Headline2</item>
+        <item name="textAppearanceHeadline3">@style/TextAppearance.EBank.Headline3</item>
+        <item name="textAppearanceHeadline4">@style/TextAppearance.EBank.Headline4</item>
+        <item name="textAppearanceHeadline5">@style/TextAppearance.EBank.Headline5</item>
+        <item name="textAppearanceHeadline6">@style/TextAppearance.EBank.Headline6</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.EBank.Subtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/TextAppearance.EBank.Subtitle2</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.EBank.Body1</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.EBank.Body2</item>
+        <item name="textAppearanceButton">@style/TextAppearance.EBank.Button</item>
+        <item name="textAppearanceCaption">@style/TextAppearance.EBank.Caption</item>
+        <item name="textAppearanceOverline">@style/TextAppearance.EBank.Overline</item>
+    </style>
+
+    <style name="EBank" parent="@style/Base.EBank" />
+
+    <style name="EBank.Yellow">
+        <item name="colorPrimary">@color/ebank_yellow_500</item>
+        <item name="colorPrimaryVariant">@color/ebank_yellow_400</item>
+        <item name="colorSecondary">@color/ebank_blue_700</item>
+        <item name="colorSecondaryVariant">@color/ebank_blue_800</item>
+        <item name="colorPrimaryDark">#000</item>
+    </style>
+
+    <style name="EBank.Blue">
+        <item name="colorPrimary">@color/ebank_blue_700</item>
+        <item name="colorPrimaryVariant">@color/ebank_blue_800</item>
+        <item name="colorSecondary">@color/ebank_yellow_500</item>
+        <item name="colorSecondaryVariant">@color/ebank_yellow_400</item>
+        <item name="colorOnPrimary">#fff</item>
+    </style>
+
+    <style name="ThemeOverlay.EBank.Blue" parent="@style/ThemeOverlay.MaterialComponents.Light">
+        <item name="colorPrimary">@color/ebank_blue_700</item>
+        <item name="colorPrimaryVariant">@color/ebank_blue_800</item>
+        <item name="colorSecondary">@color/ebank_yellow_500</item>
+        <item name="colorSecondaryVariant">@color/ebank_yellow_400</item>
+        <item name="colorOnPrimary">#fff</item>
+    </style>
+
+    <style name="ThemeOverlay.EBank.Blue.Dark" parent="@style/ThemeOverlay.MaterialComponents.Dark">
+        <item name="colorPrimary">@color/ebank_blue_700</item>
+        <item name="colorPrimaryVariant">@color/ebank_blue_800</item>
+        <item name="colorSecondary">@color/ebank_yellow_500</item>
+        <item name="colorSecondaryVariant">@color/ebank_yellow_400</item>
+        <item name="colorOnPrimary">#fff</item>
+    </style>
+
+    <style name="EBank.Pink">
+        <item name="colorPrimary">@color/ebank_pink_500</item>
+        <item name="colorSecondary">@color/ebank_pink_500</item>
+        <item name="colorPrimaryVariant">@color/ebank_pink_600</item>
+        <item name="colorOnPrimary">#000</item>
+    </style>
+
+    <style name="ThemeOverlay.EBank.TransitionShapeAppearance.Small" parent="">
+        <item name="transitionShapeAppearance">@style/ShapeAppearance.EBank.SmallComponent</item>
+    </style>
+
 </resources>

@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.Skycapitals" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Primary brand color. -->
@@ -6,5 +6,31 @@
         <item name="colorPrimaryDark">@color/purple_700</item>
         <item name="colorAccent">@color/teal_200</item>
         <!-- Customize your theme here. -->
+    </style>
+
+    <style name="EBank.Yellow">
+        <item name="colorPrimary">@color/ebank_yellow_200</item>
+        <item name="colorSecondary">@color/ebank_blue_200</item>
+        <item name="colorSurface">@color/ebank_yellow_dark_primary</item>
+    </style>
+
+    <style name="EBank.Blue">
+        <item name="colorPrimary">@color/ebank_blue_200</item>
+        <item name="colorSecondary">@color/ebank_yellow_200</item>
+        <item name="colorSurface">@color/ebank_blue_dark_primary</item>
+    </style>
+
+    <style name="ThemeOverlay.EBank.Blue" parent="@style/ThemeOverlay.MaterialComponents.Dark">
+        <item name="colorPrimary">@color/ebank_blue_200</item>
+        <item name="colorSecondary">@color/ebank_yellow_200</item>
+        <item name="colorSurface">@color/ebank_blue_dark_primary</item>
+    </style>
+
+    <style name="ThemeOverlay.EBank.Blue.Dark"/>
+
+    <style name="EBank.Pink">
+        <item name="colorPrimary">@color/ebank_pink_200</item>
+        <item name="colorSecondary">@color/ebank_pink_200</item>
+        <item name="colorSurface">@color/ebank_pink_dark_primary</item>
     </style>
 </resources>

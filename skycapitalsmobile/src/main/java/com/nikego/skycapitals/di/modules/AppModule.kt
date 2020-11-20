@@ -9,7 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import javax.inject.Singleton
 
 
-@Module(includes = [ViewModelModule::class])
+@Module(includes = [ViewModelModule::class, RetrofitModule::class])
 class AppModule {
 
     @Provides
