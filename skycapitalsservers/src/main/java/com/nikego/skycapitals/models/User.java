@@ -1,24 +1,41 @@
 package com.nikego.skycapitals.models;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table (name="test_tbl")
 public class User {
+
     @Id @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name="id")
     private  Integer userId;
+
     @Column(name="user_name")
+    @NotEmpty(message="Please provide a name!")
     private String userName;
+
     @Column(name="user_surname")
+    @NotEmpty(message="Please provide a surname!")
     private String userSurname;
+
     @Column(name="ost_office")
+    @NotEmpty(message="Please provide a office!")
     private String ostOffice;
+
+    @Column(name="card number")
+    private int cardNumber;
+
+
+    public int getCardNumber() {
+        return cardNumber;
+    }
 
     public int getUserId() {
         return userId;

@@ -25,6 +25,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web-services'
     implementation 'org.springframework.boot:spring-boot-autoconfigure'
     implementation 'org.springframework.session:spring-session-core'
+    implementation 'javax.validation:validation-api:2.0.0.Final'
     runtimeOnly 'mysql:mysql-connector-java'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'

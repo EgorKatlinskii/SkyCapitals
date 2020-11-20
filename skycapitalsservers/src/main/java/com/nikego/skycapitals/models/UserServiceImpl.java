@@ -1,8 +1,7 @@
 package com.nikego.skycapitals.models;
 
-import com.nikego.skycapitals.repository.UserRepository;
-import com.nikego.skycapitals.services.UserService;
-
+import com.nikego.skycapitals.models.repository.DBRepository;
+import com.nikego.skycapitals.models.services.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,32 +9,32 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private final UserRepository userRepository;
+    private final DBRepository DBRepository;
 
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
-    @Override
-    public void create(User client) {
-        userRepository.save(client);
+    public UserServiceImpl(DBRepository DBRepository) {
+        this.DBRepository = DBRepository;
     }
 
     @Override
     public List<User> readAll() {
-        return userRepository.findAll();
+        return DBRepository.findAll();
     }
 
     @Override
+    public void create(User user) { DBRepository.save(user); }
+
+
+
+    @Override
     public User read(int id) {
-        return userRepository.getOne(id);
+        return DBRepository.getOne(id);
     }
 
     @Override
     public boolean update(User userAccount, int id) {
-        if (userRepository.existsById(id)) {
+        if (DBRepository.existsById(id)) {
             userAccount.setUserId(id);
-            userRepository.save(userAccount);
+            DBRepository.save(userAccount);
             return true;
         }
         return false;
@@ -43,8 +42,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean delete(int id) {
-        if (userRepository.existsById(id)) {
-            userRepository.deleteById(id);
+        if (DBRepository.existsById(id)) {
+            DBRepository.deleteById(id);
             return true;
         }
         return false;

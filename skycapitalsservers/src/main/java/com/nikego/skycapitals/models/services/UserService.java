@@ -1,4 +1,4 @@
-package com.nikego.skycapitals.services;
+package com.nikego.skycapitals.models.services;
 
 import com.nikego.skycapitals.models.User;
 
