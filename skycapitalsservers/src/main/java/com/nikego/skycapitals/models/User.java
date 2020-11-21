@@ -32,7 +32,7 @@ public class User {
 
     @Column(name = "card_number")
     @NotNull
-    private Integer cardNumber;
+    private long cardNumber;
 
     public Integer getUserId() {
         return userId;
@@ -66,7 +66,7 @@ public class User {
         this.ostOffice = ostOffice;
     }
 
-    public Integer getCardNumber() {
+    public long getCardNumber() {
         return cardNumber;
     }
 

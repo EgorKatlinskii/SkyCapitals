@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.AbstractMap;
 import java.util.List;
 
 @RestController
@@ -29,30 +30,34 @@ public class UserController {
                 : ResponseEntity.status(HttpStatus.NOT_FOUND).body(users);
     }
 
-    @PostMapping(value = "/create")
+    @PostMapping(value = "/create", consumes = "application/json", produces = "application/json")
     @ResponseBody
-    public ResponseEntity<String> create(@RequestBody User user) {
-        userService.create(user);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Аккаунт успешно создан!");
+    public ResponseEntity<?> create(@RequestBody User user) {
+        try {
+            userService.create(user);
+            return ResponseEntity.status(HttpStatus.OK).body(new AbstractMap.SimpleEntry<>("id", user.getUserId()));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new AbstractMap.SimpleEntry<>("ПричинаОтказа:","Данный аккаунт уже существует!"));
+        }
     }
 
-    @GetMapping(value = "/users/{userId}", consumes = "application/json")
+    @GetMapping(value = "/users/{userId}",  consumes = "application/json", produces = "application/json")
     @ResponseBody
     public ResponseEntity<String> read(@RequestBody int id) {
         final User user = userService.read(id);
         return user != null
-                ? ResponseEntity.status(HttpStatus.OK).body("Успешно получено!" + user)
+                ? ResponseEntity.status(HttpStatus.OK).body("Успешно получено! " + user)
                 : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @GetMapping(value = "/users/update/{userId}", consumes = "application/json")
+    @GetMapping(value = "/users/update/{userId}", consumes = "application/json", produces = "application/json")
     @ResponseBody
     public ResponseEntity<String> update(@RequestBody User user, @PathVariable int userId) {
         userService.update(user, userId);
         return ResponseEntity.status(HttpStatus.OK).body("Успешно!");
     }
 
-    @PostMapping(value = "/delete", consumes = "application/json")
+    @PostMapping(value = "/delete/{userId}",  consumes = "application/json", produces = "application/json")
     @ResponseBody
     public ResponseEntity<String> delete(@RequestBody int id) {
         userService.delete(id);

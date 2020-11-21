@@ -10,7 +10,7 @@ public interface UserService {
          * @param client - клиент для создания
          */
 
-        void create(User client);
+        void create(User client) throws Exception;
 
 
         /**

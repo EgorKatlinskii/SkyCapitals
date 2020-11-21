@@ -21,9 +21,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void create(User user) { DBRepository.save(user); }
-
-
+    public void create(User user) throws Exception{ DBRepository.save(user); }
 
     @Override
     public User read(int id) {
