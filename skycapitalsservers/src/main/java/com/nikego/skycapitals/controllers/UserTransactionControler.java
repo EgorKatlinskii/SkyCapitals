@@ -1,6 +1,5 @@
 package com.nikego.skycapitals.controllers;
 
-import com.nikego.skycapitals.models.User;
 import com.nikego.skycapitals.models.UserTransaction;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,10 +20,12 @@ public class UserTransactionControler {
 
     @PostMapping(value = "/by_card_number",consumes = "application/json",produces = "application/json")
     @ResponseBody
-    public ResponseEntity<?> transferMoney(@RequestBody User userSender,User userRecipient,int sum){
-        return userTransaction.transferMoney(userSender, userRecipient, sum)
-                ?ResponseEntity.status(HttpStatus.OK).body(new AbstractMap.SimpleEntry<>("Статус операции:","Операция успешно выполнена!"))
-                : ResponseEntity.status(HttpStatus.NOT_FOUND).body(new AbstractMap.SimpleEntry<>("Статус операции:","Операция недоступна!"));
+    public ResponseEntity<?> transferMoney(@RequestBody Integer idSender,Integer idRecipient,int sum){
+        return userTransaction.transferMoney(idSender, idRecipient, sum)
+                ?ResponseEntity.status(HttpStatus.OK).body(new AbstractMap.SimpleEntry<>
+                ("Статус операции:","Операция успешно выполнена!"))
+                : ResponseEntity.status(HttpStatus.NOT_FOUND).body(new AbstractMap.SimpleEntry<>
+                ("Статус операции:","Операция недоступна!"));
     }
 
 

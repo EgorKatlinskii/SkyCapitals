@@ -31,11 +31,11 @@ public class User {
     @NotEmpty(message = "Please provide a office!")
     private String ostOffice;
 
-    @Column(name = "card_number", table = "score")
+    @Column(name = "number_score", table = "score")
     @NotNull
     private long scoreNumber;
 
-    @Column(name = "card_name", table= "score")
+    @Column(name = "name_card", table= "score")
     @NotNull
     private String cardName;
 
