@@ -7,6 +7,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "users")
+@SecondaryTable(name = "score", pkJoinColumns = @PrimaryKeyJoinColumn(name = "Custom_id"))
 public class User {
 
     @Id
@@ -30,9 +31,29 @@ public class User {
     @NotEmpty(message = "Please provide a office!")
     private String ostOffice;
 
-    @Column(name = "card_number")
+    @Column(name = "card_number", table = "score")
     @NotNull
-    private long cardNumber;
+    private long scoreNumber;
+
+    @Column(name = "card_name", table= "score")
+    @NotNull
+    private String cardName;
+
+    @Column(name = "balance",table = "score")
+    @NotNull
+    private int userBalance;
+
+    public int getUserBalance() {
+        return userBalance;
+    }
+
+    public void setUserBalance(int userBalance) {
+        this.userBalance = userBalance;
+    }
+
+    public String getCardName() {
+        return cardName;
+    }
 
     public Integer getUserId() {
         return userId;
@@ -66,11 +87,11 @@ public class User {
         this.ostOffice = ostOffice;
     }
 
-    public long getCardNumber() {
-        return cardNumber;
+    public long getScoreNumber() {
+        return scoreNumber;
     }
 
-    public void setCardNumber(Integer cardNumber) {
-        this.cardNumber = cardNumber;
+    public void setScoreNumber(Integer scoreNumber) {
+        this.scoreNumber = scoreNumber;
     }
 }

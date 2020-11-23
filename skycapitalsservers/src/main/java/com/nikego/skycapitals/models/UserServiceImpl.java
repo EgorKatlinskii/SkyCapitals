@@ -1,7 +1,7 @@
 package com.nikego.skycapitals.models;
 
-import com.nikego.skycapitals.models.repository.DBRepository;
-import com.nikego.skycapitals.models.services.UserService;
+import com.nikego.skycapitals.repository.DBRepository;
+import com.nikego.skycapitals.services.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

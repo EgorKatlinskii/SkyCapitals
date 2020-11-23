@@ -1,7 +1,7 @@
 package com.nikego.skycapitals.controllers;
 
 import com.nikego.skycapitals.models.User;
-import com.nikego.skycapitals.models.services.UserService;
+import com.nikego.skycapitals.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,11 +37,11 @@ public class UserController {
             userService.create(user);
             return ResponseEntity.status(HttpStatus.OK).body(new AbstractMap.SimpleEntry<>("id", user.getUserId()));
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new AbstractMap.SimpleEntry<>("ПричинаОтказа:","Данный аккаунт уже существует!"));
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new AbstractMap.SimpleEntry<>("ПричинаОтказа:", "Данный аккаунт уже существует!"));
         }
     }
 
-    @GetMapping(value = "/users/{userId}",  consumes = "application/json", produces = "application/json")
+    @GetMapping(value = "/users/{userId}", consumes = "application/json", produces = "application/json")
     @ResponseBody
     public ResponseEntity<String> read(@RequestBody int id) {
         final User user = userService.read(id);
@@ -57,7 +57,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body("Успешно!");
     }
 
-    @PostMapping(value = "/delete/{userId}",  consumes = "application/json", produces = "application/json")
+    @PostMapping(value = "/delete/{userId}", consumes = "application/json", produces = "application/json")
     @ResponseBody
     public ResponseEntity<String> delete(@RequestBody int id) {
         userService.delete(id);
