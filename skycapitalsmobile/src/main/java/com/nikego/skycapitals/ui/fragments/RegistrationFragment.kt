@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
@@ -26,16 +25,12 @@ class RegistrationFragment(viewModelFactory: ViewModelProvider.Factory) : Fragme
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentRegistrationBinding.inflate(inflater).apply {
-            repeatPassword.addTextChangedListener {
-                alertMessage.visibility = if (it.toString() == password.text.toString()) View.GONE else View.VISIBLE
-            }
-
             btnRegister.setOnClickListener {
                 registrationViewModel.register(
-                        email.text.toString(),
-                        firstName.text.toString(),
-                        lastName.text.toString(),
-                        password.text.toString()
+                        emailEditText.text.toString(),
+                        firstNameEditText.text.toString(),
+                        lastNameEditText.text.toString(),
+                        passwordEditText.text.toString()
                 )
             }
         }

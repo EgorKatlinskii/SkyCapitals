@@ -6,95 +6,95 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="?attr/colorPrimarySurface"
-        android:theme="@style/EBank.Blue">
+        tools:context=".RegistrationFragment">
 
         <LinearLayout
             android:id="@+id/login_info_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:context=".RegisterFragment">
 
-            <EditText
-                android:id="@+id/first_name"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/first_name_input_layout"
+                style="@style/TextInputLayoutAppearance"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginBottom="10dp"
-                android:textAppearance="?attr/textAppearanceSubtitle1"
-                android:background="@drawable/rounded_frame"
-                android:hint="@string/first_name"
-                android:inputType="textPersonName"
-                android:padding="15dp"
-                android:textSize="15sp" />
+                android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/last_name"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/rounded_frame"
-                android:hint="@string/last_name"
-                android:textAppearance="?attr/textAppearanceSubtitle1"
-                android:inputType="textPersonName"
-                android:padding="15dp"
-                android:textSize="15sp" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/first_name_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:hint="@string/first_name"
+                    android:inputType="textPersonName" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:id="@+id/email"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/last_name_input_layout"
+                style="@style/TextInputLayoutAppearance"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/rounded_frame"
-                android:hint="@string/email"
-                android:textAppearance="?attr/textAppearanceSubtitle1"
-                android:inputType="textEmailAddress"
-                android:padding="15dp"
-                android:textSize="15sp" />
+                android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/password"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/rounded_frame"
-                android:hint="@string/password"
-                android:inputType="textPassword"
-                android:padding="15dp"
-                android:textSize="15sp"
-                android:textAppearance="?attr/textAppearanceSubtitle1" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/last_name_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:hint="@string/last_name"
+                    android:inputType="textPersonName" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:id="@+id/repeat_password"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/email_input_layout"
+                style="@style/TextInputLayoutAppearance"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/rounded_frame"
-                android:hint="@string/repeat_password"
-                android:inputType="textPassword"
-                android:padding="15dp"
-                android:layout_marginBottom="10dp"
-                android:textSize="15sp" />
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/alert_message"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/email_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/password_input_layout"
+                style="@style/TextInputLayoutAppearance"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Passwords don't match"
-                android:textColor="@android:color/holo_red_dark"
-                android:visibility="gone" />
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/password_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:hint="@string/password"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/repeat_password_input_layout"
+                style="@style/TextInputLayoutAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/repeat_password_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:hint="@string/repeat_password"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/btn_register"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/rounded_frame"
-                android:backgroundTint="?attr/colorSecondary"
-                android:text="@string/register"
-                tools:backgroundTint="?attr/colorSecondary" />
+                android:layout_height="55dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/register" />
         </LinearLayout>
 
         <ImageView
@@ -104,16 +104,16 @@
             app:layout_constraintBottom_toTopOf="@id/swipe_left"
             app:layout_constraintEnd_toEndOf="@id/swipe_left"
             app:layout_constraintStart_toStartOf="@id/swipe_left"
-            app:tint="?attr/colorOnPrimary" />
+            app:tint="?attr/colorPrimaryDark" />
 
         <TextView
             android:id="@+id/swipe_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:textColor="?attr/colorOnPrimary"
-            android:textAppearance="?attr/textAppearanceBody2"
             android:text="@string/swipe_right_for_login"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+            android:textColor="?attr/colorPrimaryDark"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="?attr/colorPrimarySurface"
-        android:theme="@style/EBank.Blue"
         tools:context=".LoginFragment">
 
         <TextView
             android:id="@+id/sky_capitals_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/bold"
             android:gravity="end"
-            android:text="@string/skycapitals"
-            android:textColor="?attr/colorOnPrimary"
-            android:textAppearance="?attr/textAppearanceHeadline3"
             android:paddingHorizontal="10dp"
+            android:text="@string/skycapitals"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="50sp"
             app:layout_constraintBottom_toTopOf="@id/ebank_text"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
@@ -28,10 +28,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="end"
-            android:text="@string/ebank"
-            android:textColor="?attr/colorOnPrimary"
-            android:textAppearance="?attr/textAppearanceHeadline4"
             android:paddingHorizontal="10dp"
+            android:text="@string/ebank"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="30sp"
             app:layout_constraintBottom_toTopOf="@id/login_info_container"
             app:layout_constraintTop_toBottomOf="@id/sky_capitals_text" />
 
@@ -39,44 +40,48 @@
             android:id="@+id/login_info_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <EditText
-                android:id="@+id/login_email"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/login_email_input_layout"
+                style="@style/TextInputLayoutAppearance"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/rounded_frame"
-                android:hint="@string/email"
-                android:inputType="textEmailAddress"
-                android:padding="15dp"
-                android:textAppearance="?attr/textAppearanceSubtitle1"
-                android:textSize="15sp" />
+                android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/login_password"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/login_email_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/login_password_input_layout"
+                style="@style/TextInputLayoutAppearance"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/rounded_frame"
-                android:hint="@string/password"
-                android:inputType="textPassword"
-                android:padding="15dp"
-                android:textAppearance="?attr/textAppearanceSubtitle1"
-                android:textSize="15sp" />
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/login_password_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:padding="15dp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/btn_login"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:layout_marginTop="10dp"
-                android:backgroundTint="?attr/colorSecondary"
-                android:background="@drawable/rounded_frame"
-                android:text="@string/log_in"
-                tools:backgroundTint="?attr/colorSecondary" />
+                android:text="@string/log_in" />
         </LinearLayout>
 
         <ImageView
@@ -87,16 +92,16 @@
             app:layout_constraintBottom_toTopOf="@id/swipe_right"
             app:layout_constraintEnd_toEndOf="@id/swipe_right"
             app:layout_constraintStart_toStartOf="@id/swipe_right"
-            app:tint="?attr/colorOnPrimary" />
+            app:tint="?attr/colorPrimaryDark" />
 
         <TextView
             android:id="@+id/swipe_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:textColor="?attr/colorOnPrimary"
             android:text="@string/swipe_left_to_register"
-            android:textAppearance="?attr/textAppearanceBody2"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+            android:textColor="?attr/colorPrimaryDark"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

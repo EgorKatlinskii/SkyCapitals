@@ -26,7 +26,7 @@ class LoginFragment(viewModelFactory: ViewModelProvider.Factory) : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentLoginBinding.inflate(inflater).apply {
             btnLogin.setOnClickListener {
-                loginViewModel.login(loginEmail.text.toString(), loginPassword.text.toString())
+                loginViewModel.login(loginEmailEditText.text.toString(), loginPasswordEditText.text.toString())
             }
         }
 
