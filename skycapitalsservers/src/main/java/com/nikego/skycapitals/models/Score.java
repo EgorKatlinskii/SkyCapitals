@@ -7,13 +7,14 @@ import javax.validation.constraints.NotNull;
 @Table(name = "score")
 public class Score {
 
-    @Column(name = "userId")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_Id")
     @NotNull
     private Integer userId;
 
     @Column(name = "number_score")
-    @NotNull
-    private long scoreNumber;
+    private @NotNull Integer scoreNumber;
 
     @Column(name="name_card")
     @NotNull
@@ -21,11 +22,11 @@ public class Score {
 
 
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name="user_id")
+    @JoinColumn(name="user_id",insertable = false, updatable = false)
     private User user;
 
 
-    public Score(@NotNull int userId, @NotNull long scoreNumber, @NotNull String card) {
+    public Score(@NotNull int userId, @NotNull Integer scoreNumber, @NotNull String card) {
         this.userId = userId;
         this.scoreNumber = scoreNumber;
         this.card = card;
@@ -39,17 +40,15 @@ public class Score {
         this.userId = userId;
     }
 
-    public long getScoreNumber() {
+    public @NotNull Integer getScoreNumber() {
         return scoreNumber;
     }
 
-    public void setScoreNumber(long scoreNumber) {
+    public void setScoreNumber(@NotNull Integer scoreNumber) {
         this.scoreNumber = scoreNumber;
     }
 
-    public String getCard() {
-        return card;
-    }
+    public String getCard() { return card; }
 
     public void setCard(String card) {
         this.card = card;
