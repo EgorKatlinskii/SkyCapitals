@@ -4,10 +4,10 @@ package com.nikego.skycapitals.models;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
-@SecondaryTable(name = "score", pkJoinColumns = @PrimaryKeyJoinColumn(name = "Custom_id"))
 public class User {
 
     @Id
@@ -31,29 +31,9 @@ public class User {
     @NotEmpty(message = "Please provide a office!")
     private String ostOffice;
 
-    @Column(name = "number_score", table = "score")
-    @NotNull
-    private long scoreNumber;
+    @OneToMany(mappedBy = "user",cascade =CascadeType.ALL)
+    private List<Score> score;
 
-    @Column(name = "name_card", table= "score")
-    @NotNull
-    private String cardName;
-
-    @Column(name = "balance",table = "score")
-    @NotNull
-    private int userBalance;
-
-    public int getUserBalance() {
-        return userBalance;
-    }
-
-    public void setUserBalance(int userBalance) {
-        this.userBalance = userBalance;
-    }
-
-    public String getCardName() {
-        return cardName;
-    }
 
     public Integer getUserId() {
         return userId;
@@ -87,11 +67,5 @@ public class User {
         this.ostOffice = ostOffice;
     }
 
-    public long getScoreNumber() {
-        return scoreNumber;
-    }
 
-    public void setScoreNumber(Integer scoreNumber) {
-        this.scoreNumber = scoreNumber;
-    }
 }

@@ -1,6 +1,6 @@
 package com.nikego.skycapitals.models;
 
-import com.nikego.skycapitals.repository.DBRepository;
+import com.nikego.skycapitals.repository.UserRepository;
 import com.nikego.skycapitals.services.UserService;
 import org.springframework.stereotype.Service;
 
@@ -9,9 +9,9 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private final DBRepository DBRepository;
+    private final UserRepository DBRepository;
 
-    public UserServiceImpl(DBRepository DBRepository) {
+    public UserServiceImpl(UserRepository DBRepository) {
         this.DBRepository = DBRepository;
     }
 
