@@ -2,6 +2,8 @@ package com.nikego.skycapitals.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Collections;
+import java.util.HashSet;
 
 @Entity
 @Table(name = "score")
@@ -18,7 +20,8 @@ public class Score {
 
     @Column(name="name_card")
     @NotNull
-    private String card;
+    @OneToMany(mappedBy = "score",cascade = CascadeType.ALL)
+    private HashSet<String> card;
 
 
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
@@ -29,7 +32,7 @@ public class Score {
     public Score(@NotNull int userId, @NotNull Integer scoreNumber, @NotNull String card) {
         this.userId = userId;
         this.scoreNumber = scoreNumber;
-        this.card = card;
+        this.card = new HashSet<String>(Collections.singleton(card));
     }
 
     public int getUserId() {
@@ -46,12 +49,6 @@ public class Score {
 
     public void setScoreNumber(@NotNull Integer scoreNumber) {
         this.scoreNumber = scoreNumber;
-    }
-
-    public String getCard() { return card; }
-
-    public void setCard(String card) {
-        this.card = card;
     }
 
     public User getUser() {
