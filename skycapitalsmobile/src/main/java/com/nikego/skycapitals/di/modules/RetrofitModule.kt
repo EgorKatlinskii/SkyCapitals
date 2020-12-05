@@ -1,6 +1,6 @@
 package com.nikego.skycapitals.di.modules
 
-import com.nikego.skycapitals.network.SkyCapitalsApiService
+import com.nikego.skycapitals.network.retrofit.SkyCapitalsApiService
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module

@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.nikego.skycapitals.di.factories.ViewModelFactory
 import com.nikego.skycapitals.di.keys.ViewModelKey
+import com.nikego.skycapitals.ui.viewmodels.BalanceViewModel
 import com.nikego.skycapitals.ui.viewmodels.LoginViewModel
 import com.nikego.skycapitals.ui.viewmodels.RegistrationViewModel
 import dagger.Binds
@@ -24,6 +25,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(RegistrationViewModel::class)
     abstract fun bindRegistrationViewModel(registrationViewModel: RegistrationViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(BalanceViewModel::class)
+    abstract fun bindBalanceViewModel(balanceViewModel: BalanceViewModel): ViewModel
 
     @Binds
     @Singleton

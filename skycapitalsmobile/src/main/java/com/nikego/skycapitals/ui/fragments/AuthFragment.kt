@@ -12,16 +12,18 @@ import com.nikego.skycapitals.ui.adapters.EntryPagerAdapter
 import javax.inject.Inject
 
 
-class AuthFragment @Inject constructor(
-        private val viewModelFactory: ViewModelProvider.Factory
-) : Fragment(), Injectable {
+class AuthFragment : Fragment(), Injectable {
 
-//    @Inject
-//    lateinit var viewModelFactory: ViewModelProvider.Factory
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private lateinit var binding: FragmentAuthBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentAuthBinding.inflate(inflater).apply {
             viewPager.adapter = EntryPagerAdapter(parentFragmentManager).apply {
                 addFragment(LoginFragment(viewModelFactory))

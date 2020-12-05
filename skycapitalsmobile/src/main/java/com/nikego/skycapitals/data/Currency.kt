@@ -1,5 +1,5 @@
 package com.nikego.skycapitals.data
 
-enum class Currency {
-    USD, BYN, EUR
+enum class Currency(val sign: String) {
+    USD("$"), BYN("BYN"), EUR("€")
 }

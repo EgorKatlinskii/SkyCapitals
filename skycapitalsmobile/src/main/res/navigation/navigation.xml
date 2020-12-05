@@ -9,7 +9,11 @@
         android:id="@+id/authFragment"
         android:name="com.nikego.skycapitals.ui.fragments.AuthFragment"
         android:label="AuthFragment"
-        tools:layout="@layout/fragment_auth" />
+        tools:layout="@layout/fragment_auth">
+        <action
+            android:id="@+id/action_authFragment_to_balanceFragment2"
+            app:destination="@id/balanceFragment" />
+    </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.nikego.skycapitals.ui.fragments.HomeFragment"
@@ -18,4 +22,13 @@
     <action
         android:id="@+id/action_global_homeFragment"
         app:destination="@id/homeFragment" />
+    <fragment
+        android:id="@+id/balanceFragment"
+        android:name="com.nikego.skycapitals.ui.fragments.BalanceFragment"
+        android:label="BalanceFragment"
+        tools:layout="@layout/fragment_balance" >
+        <argument
+            android:name="userId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

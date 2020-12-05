@@ -9,8 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.nikego.skycapitals.R
-import com.nikego.skycapitals.data.datatype.LoadState
 import com.nikego.skycapitals.databinding.FragmentLoginBinding
 import com.nikego.skycapitals.ui.viewmodels.LoginViewModel
 
@@ -23,19 +21,40 @@ class LoginFragment(viewModelFactory: ViewModelProvider.Factory) : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentLoginBinding.inflate(inflater).apply {
             btnLogin.setOnClickListener {
-                loginViewModel.login(loginEmailEditText.text.toString(), loginPasswordEditText.text.toString())
+                loginViewModel.login(
+                    loginEmailEditText.text.toString(),
+                    loginPasswordEditText.text.toString()
+                )
             }
         }
 
-        loginViewModel.loginState.observe(viewLifecycleOwner) {
-            when (it) {
-                is LoadState.Success -> findNavController().navigate(R.id.action_global_homeFragment)
-                is LoadState.Error -> Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        loginViewModel.run {
+            errorMsg.observe(viewLifecycleOwner) {
+                it?.getContentIfNotHandled()?.let {
+                    Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            accessGiven.observe(viewLifecycleOwner) { event ->
+                event?.getContentIfNotHandled()?.let {
+                    findNavController().navigate(
+                        AuthFragmentDirections.actionAuthFragmentToBalanceFragment2(
+                            it.userId
+                        )
+                    )
+                }
             }
         }
-        return binding.root
     }
 }

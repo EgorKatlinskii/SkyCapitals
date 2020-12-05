@@ -15,21 +15,13 @@ class AppModule {
     @Provides
     @Singleton
     fun provideDb(context: Context) =
-            Room.databaseBuilder(context, EBankDatabase::class.java, "EBank.db")
-                    .fallbackToDestructiveMigration()
-                    .build()
+        Room.databaseBuilder(context, EBankDatabase::class.java, "EBank.db")
+            .fallbackToDestructiveMigration()
+            .build()
 
     @Provides
-    fun provideAccountDao(database: EBankDatabase) =
-            database.accountDao
-
-    @Provides
-    fun provideBankCardDao(database: EBankDatabase) =
-            database.bankCardDao
-
-    @Provides
-    fun provideAccountWithCardsDao(database: EBankDatabase) =
-            database.accountWithCardsDao
+    fun provideUserDao(database: EBankDatabase) =
+        database.userDao
 
     @Provides
     fun provideIODispatcher() = Dispatchers.IO
