@@ -20,6 +20,8 @@ public class UserController {
         this.userService = userService;
     }
 
+    /*успешный логин =вся инфа*/
+
     @GetMapping(value = "/users", consumes = "application/json", produces = "application/json")
     @ResponseBody
     public ResponseEntity<List<User>> readAll() {
@@ -27,7 +29,7 @@ public class UserController {
 
         return users != null && !users.isEmpty()
                 ? ResponseEntity.status(HttpStatus.OK).body(users)
-                : ResponseEntity.status(HttpStatus.NOT_FOUND).body(users);
+                : new ResponseEntity(HttpStatus.NOT_FOUND);
     }
 
     @PostMapping(value = "/create", consumes = "application/json", produces = "application/json")
@@ -35,7 +37,7 @@ public class UserController {
     public ResponseEntity<?> create(@RequestBody User user) {
         try {
             userService.create(user);
-            return ResponseEntity.status(HttpStatus.OK).body(new AbstractMap.SimpleEntry<>("id", user.getUserId()));
+            return ResponseEntity.status(HttpStatus.OK).body(user);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new AbstractMap.SimpleEntry<>("ПричинаОтказа:", "Данный аккаунт уже существует!"));
         }
@@ -43,10 +45,10 @@ public class UserController {
 
     @GetMapping(value = "/users/{userId}", consumes = "application/json", produces = "application/json")
     @ResponseBody
-    public ResponseEntity<String> read(@RequestBody int id) {
-        final User user = userService.read(id);
+    public ResponseEntity<?> read(@PathVariable int userId) {
+        final User user = userService.read(userId);
         return user != null
-                ? ResponseEntity.status(HttpStatus.OK).body("Успешно получено! " + user)
+                ? ResponseEntity.status(HttpStatus.OK).body(new AbstractMap.SimpleEntry<>("Успешно:", user))
                 : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
@@ -59,8 +61,8 @@ public class UserController {
 
     @PostMapping(value = "/delete/{userId}", consumes = "application/json", produces = "application/json")
     @ResponseBody
-    public ResponseEntity<String> delete(@RequestBody int id) {
-        userService.delete(id);
+    public ResponseEntity<String> delete(@PathVariable int userId) {
+        userService.delete(userId);
         return ResponseEntity.status(HttpStatus.OK).body("Успешно удалено!");
     }
 }

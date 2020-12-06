@@ -2,10 +2,11 @@ package com.nikego.skycapitals.models;
 
 import javax.persistence.*;
 
+
 @Entity
 @Table(name="card")
 public class Card {
-
+    @Id
     @Column(name ="number_card")
     private Integer numberCard;
 
@@ -15,7 +16,7 @@ public class Card {
     private Integer numberScore;
 
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name="number_score",insertable = false,updatable = false)
+    @JoinColumn(name="number_card",insertable = false,updatable = false)
     private Score score;
 
     public Integer getNumberScore() {
