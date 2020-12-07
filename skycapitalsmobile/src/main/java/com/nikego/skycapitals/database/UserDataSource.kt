@@ -31,6 +31,15 @@ class UserDataSource @Inject constructor(private val userDao: UserDao) {
             Result.Error(t)
         }
 
+    suspend fun getUsers() =
+        try {
+            userDao.getUsers().takeIf { it.isNotEmpty() }?.let {
+                Result.Success(it)
+            } ?: Result.Error(IllegalStateException("No users in database"))
+        } catch (t: Throwable) {
+            Result.Error(t)
+        }
+
     fun getUserById(userId: Int) =
         userDao.getUserById(userId)
 

@@ -29,4 +29,6 @@ class UserRepositoryImpl @Inject constructor(
     override suspend fun getUserById(userId: Int): Result<User> =
         userDataSource.getSingleUserById(userId)
 
+    override suspend fun getUsers(): Result<List<User>> =
+        userDataSource.getUsers()
 }

@@ -33,11 +33,22 @@
             android:layout_alignBottom="@+id/card_background"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginBottom="24dp"
             app:layout_constraintBottom_toBottomOf="@+id/card_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             bind:user="@{user}" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/item_score_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/card_background"
+            bind:listitem="@layout/item_score" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

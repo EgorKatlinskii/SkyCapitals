@@ -8,61 +8,62 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.nikego.skycapitals.databinding.FragmentBalanceBinding
+import com.nikego.skycapitals.databinding.FragmentScoreBinding
 import com.nikego.skycapitals.di.Injectable
-import com.nikego.skycapitals.ui.adapters.ScoreItemAdapter
-import com.nikego.skycapitals.ui.adapters.ScoreItemListener
-import com.nikego.skycapitals.ui.viewmodels.BalanceViewModel
+import com.nikego.skycapitals.ui.adapters.BankCardItemAdapter
+import com.nikego.skycapitals.ui.adapters.BankCardItemListener
+import com.nikego.skycapitals.ui.viewmodels.ScoreViewModel
 import com.nikego.skycapitals.utils.SpringAddItemAnimator
-import com.nikego.skycapitals.vo.ScoreItem
+import com.nikego.skycapitals.vo.BankCardItem
 import javax.inject.Inject
 
 
-class BalanceFragment : Fragment(), ScoreItemListener, Injectable {
+class ScoreFragment : Fragment(), BankCardItemListener, Injectable {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private lateinit var binding: FragmentBalanceBinding
+    private lateinit var binding: FragmentScoreBinding
 
-    private val balanceViewModel: BalanceViewModel by viewModels {
+    private val scoreViewModel: ScoreViewModel by viewModels {
         viewModelFactory
     }
 
-    private val navArgs: BalanceFragmentArgs by navArgs()
+    private val navArgs: ScoreFragmentArgs by navArgs()
 
-    private val scoreItemAdapter = ScoreItemAdapter(this)
+    private val bankCardItemAdapter = BankCardItemAdapter(this)
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentBalanceBinding.inflate(inflater).apply {
-            itemScoreView.run {
-                adapter = scoreItemAdapter
+        binding = FragmentScoreBinding.inflate(inflater).apply {
+            itemBankCardView.run {
+                adapter = bankCardItemAdapter
                 itemAnimator = SpringAddItemAnimator()
                 layoutManager = LinearLayoutManager(
-                    requireNotNull(this@BalanceFragment.activity).application,
+                    requireNotNull(this@ScoreFragment.activity).application,
                     RecyclerView.VERTICAL,
                     false
                 )
             }
         }
-        balanceViewModel.setUser(navArgs.userId)
+
+        scoreViewModel.setScore(navArgs.scoreNumber)
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        balanceViewModel.run {
-            user.observe(viewLifecycleOwner) {
-                binding.user = it
-                scoreItemAdapter.submitList(it.scores)
-                scoreItemAdapter.notifyDataSetChanged()
+        scoreViewModel.run {
+            score.observe(viewLifecycleOwner) {
+                binding.score = it
+                bankCardItemAdapter.submitList(it.bankCards)
+                bankCardItemAdapter.notifyDataSetChanged()
             }
             errorMsg.observe(viewLifecycleOwner) { event ->
                 event?.getContentIfNotHandled()?.let {
@@ -72,11 +73,7 @@ class BalanceFragment : Fragment(), ScoreItemListener, Injectable {
         }
     }
 
-    override fun onClick(item: ScoreItem) {
-        findNavController().navigate(
-            BalanceFragmentDirections.actionBalanceFragmentToScoreFragment(
-                item.scoreNumber
-            )
-        )
+    override fun onClick(bankCardItem: BankCardItem) {
+        Toast.makeText(context, bankCardItem.balance.toString(), Toast.LENGTH_SHORT).show()
     }
 }

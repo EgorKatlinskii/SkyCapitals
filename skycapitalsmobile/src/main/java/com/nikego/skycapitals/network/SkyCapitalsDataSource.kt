@@ -18,12 +18,16 @@ class SkyCapitalsDataSource @Inject constructor(private val skyCapitalsApiServic
         email = "sobaka@gmail.ru",
         userName = "Pitro",
         userSurname = "Pitrov",
-        scores = List(5) {
-            Score(Random.nextInt(), Currency.USD, getBankCards())
+        scores = List(15) {
+            Score(
+                Random.nextInt(),
+                listOf(Currency.USD, Currency.BYN, Currency.EUR).random(),
+                getBankCards()
+            )
         }
     )
 
-    private fun getBankCards() = List(5) {
+    private fun getBankCards() = List((1..5).random()) {
         BankCard(Random.nextInt(), "card name", Random.nextInt(0, 1000))
     }
 

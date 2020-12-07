@@ -7,6 +7,7 @@ import javax.inject.Inject
 
 
 class UserUseCase @Inject constructor(private val userRepository: UserRepository) {
+
     suspend fun getUserItem() =
         userRepository.getUser().let {
             when (it) {

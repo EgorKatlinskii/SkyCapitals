@@ -7,6 +7,7 @@ import com.nikego.skycapitals.di.keys.ViewModelKey
 import com.nikego.skycapitals.ui.viewmodels.BalanceViewModel
 import com.nikego.skycapitals.ui.viewmodels.LoginViewModel
 import com.nikego.skycapitals.ui.viewmodels.RegistrationViewModel
+import com.nikego.skycapitals.ui.viewmodels.ScoreViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -30,6 +31,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(BalanceViewModel::class)
     abstract fun bindBalanceViewModel(balanceViewModel: BalanceViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ScoreViewModel::class)
+    abstract fun bindScoreViewModel(scoreViewModel: ScoreViewModel): ViewModel
 
     @Binds
     @Singleton
