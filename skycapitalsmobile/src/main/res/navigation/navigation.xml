@@ -15,20 +15,24 @@
             app:destination="@id/balanceFragment" />
     </fragment>
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.nikego.skycapitals.ui.fragments.HomeFragment"
-        android:label="HomeFragment"
-        tools:layout="@layout/fragment_home" />
-    <action
-        android:id="@+id/action_global_homeFragment"
-        app:destination="@id/homeFragment" />
-    <fragment
         android:id="@+id/balanceFragment"
         android:name="com.nikego.skycapitals.ui.fragments.BalanceFragment"
         android:label="BalanceFragment"
-        tools:layout="@layout/fragment_balance" >
+        tools:layout="@layout/fragment_balance">
         <argument
             android:name="userId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_balanceFragment_to_scoreFragment"
+            app:destination="@id/scoreFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/scoreFragment"
+        android:name="com.nikego.skycapitals.ui.fragments.ScoreFragment"
+        android:label="ScoreFragment"
+        tools:layout="@layout/fragment_score">
+        <argument
+            android:name="scoreNumber"
             app:argType="integer" />
     </fragment>
 </navigation>

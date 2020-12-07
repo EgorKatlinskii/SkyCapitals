@@ -49,24 +49,23 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/balance_amount"
+                    android:id="@+id/balance_usd"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="16dp"
                     android:fontFamily="@font/bold"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="34sp"
-                    app:balance="@{user.balance}"
+                    android:textSize="26sp"
                     app:currency="@{Currency.USD}"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/accountbalance"
                     app:layout_constraintTop_toBottomOf="@+id/accountbalance"
                     app:layout_constraintVertical_bias="0.0"
+                    app:scores="@{user.scores}"
                     tools:text="$32,550" />
 
                 <TextView
-                    android:id="@+id/cents"
+                    android:id="@+id/cents_usd"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2dp"
@@ -74,11 +73,75 @@
                     android:text=".00"
                     android:textColor="@color/colorPrimary"
                     android:textSize="24sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/balance_amount"
-                    app:layout_constraintStart_toEndOf="@+id/balance_amount"
-                    app:layout_constraintTop_toTopOf="@+id/balance_amount"
+                    app:layout_constraintBottom_toBottomOf="@+id/balance_usd"
+                    app:layout_constraintStart_toEndOf="@+id/balance_usd"
+                    app:layout_constraintTop_toTopOf="@+id/balance_usd"
                     app:layout_constraintVertical_bias="1.0"
                     tools:text=".66" />
+
+                <TextView
+                    android:id="@+id/balance_euro"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/bold"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="26sp"
+                    app:currency="@{Currency.EUR}"
+                    app:layout_constraintStart_toStartOf="@+id/balance_usd"
+                    app:layout_constraintTop_toBottomOf="@+id/balance_usd"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:scores="@{user.scores}"
+                    tools:text="€32,550" />
+
+                <TextView
+                    android:id="@+id/cents_euro"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:fontFamily="@font/lato"
+                    android:text=".00"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/balance_euro"
+                    app:layout_constraintStart_toEndOf="@+id/balance_euro"
+                    app:layout_constraintTop_toTopOf="@+id/balance_euro"
+                    app:layout_constraintVertical_bias="1.0"
+                    tools:text=".66" />
+
+                <TextView
+                    android:id="@+id/balance_byn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/bold"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="26sp"
+                    app:currency="@{Currency.BYN}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/balance_euro"
+                    app:layout_constraintTop_toBottomOf="@+id/balance_euro"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:scores="@{user.scores}"
+                    tools:text="Br32,550" />
+
+                <TextView
+                    android:id="@+id/cents_byn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:fontFamily="@font/lato"
+                    android:text=".00"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/balance_byn"
+                    app:layout_constraintStart_toEndOf="@+id/balance_byn"
+                    app:layout_constraintTop_toTopOf="@+id/balance_byn"
+                    app:layout_constraintVertical_bias="1.0"
+                    tools:text=".66" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>

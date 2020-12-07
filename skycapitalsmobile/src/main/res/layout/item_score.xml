@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="com.nikego.skycapitals.ui.adapters.ScoreItemListener" />
+
+        <variable
+            name="score"
+            type="com.nikego.skycapitals.vo.ScoreItem" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:elevation="0dp"
+        android:focusable="true"
+        android:onClick="@{() -> listener.onClick(score)}">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/score_currency"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/cardshape_background"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:gravity="center|center"
+                android:text="@{score.currency.sign}"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="$" />
+
+            <TextView
+                android:id="@+id/score_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@{String.valueOf(score.scoreNumber)}"
+                android:textColor="@color/gray600"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/score_currency"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="12345678" />
+
+            <TextView
+                android:id="@+id/accountNumberText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/cardshape_background"
+                android:backgroundTint="@color/colorAccentDark"
+                android:paddingStart="8dp"
+                android:paddingLeft="8dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="8dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="4dp"
+                android:textAllCaps="true"
+                android:textColor="@color/colorAccentDark"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:cardsAmount="@{score.bankCards}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/score_number"
+                app:layout_constraintTop_toBottomOf="@+id/score_number"
+                tools:text="2 CARDS" />
+
+            <TextView
+                android:id="@+id/score_balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/bold"
+                android:textColor="@color/colorPrimary"
+                android:textSize="22sp"
+                app:balance="@{score.scoreBalance}"
+                app:currency="@{score.currency}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="$1234" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

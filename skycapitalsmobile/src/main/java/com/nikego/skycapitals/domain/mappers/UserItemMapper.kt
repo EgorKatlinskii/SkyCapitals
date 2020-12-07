@@ -13,11 +13,12 @@ object UserItemMapper : BaseMapper<User, UserItem> {
         type.run {
             UserItem(
                 name = "$userName $userSurname",
-                scores = scores.map {
-                    ScoreItem(it.scoreNumber, it.currency, it.bankCards.map {
+                scores = scores.map { score ->
+                    ScoreItem(score.scoreNumber, score.currency, score.bankCards.map {
                         BankCardItem(
                             it.numberCard.toLong(),
                             "$userSurname $userName".toUpperCase(),
+                            score.currency,
                             it.balance
                         )
                     })

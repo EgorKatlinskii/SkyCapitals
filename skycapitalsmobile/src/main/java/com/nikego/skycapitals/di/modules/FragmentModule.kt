@@ -2,7 +2,7 @@ package com.nikego.skycapitals.di.modules
 
 import com.nikego.skycapitals.ui.fragments.AuthFragment
 import com.nikego.skycapitals.ui.fragments.BalanceFragment
-import com.nikego.skycapitals.ui.fragments.HomeFragment
+import com.nikego.skycapitals.ui.fragments.ScoreFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -14,8 +14,8 @@ abstract class FragmentModule {
     abstract fun contributeAuthFragment(): AuthFragment
 
     @ContributesAndroidInjector
-    abstract fun contributeHomeFragment(): HomeFragment
+    abstract fun contributeBalanceFragment(): BalanceFragment
 
     @ContributesAndroidInjector
-    abstract fun contributeBalanceFragment(): BalanceFragment
+    abstract fun contributeScoreFragment(): ScoreFragment
 }
