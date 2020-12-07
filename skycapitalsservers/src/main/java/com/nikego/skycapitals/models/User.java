@@ -2,6 +2,7 @@ package com.nikego.skycapitals.models;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -17,23 +18,34 @@ public class User {
     private Integer userId;
 
     @Column(name = "user_name")
-    @NotNull
+    @NotBlank
     @NotEmpty(message = "Please provide a name!")
     private String userName;
 
-    @Column(name = "user_surname")
+    @Column(name = "password")
     @NotNull
+    private Integer password;
+
+    @Column(name = "user_surname")
+    @NotBlank
     @NotEmpty(message = "Please provide a surname!")
     private String userSurname;
 
     @Column(name = "ost_office")
-    @NotNull
+    @NotBlank
     @NotEmpty(message = "Please provide a office!")
     private String ostOffice;
 
-    @OneToMany(mappedBy = "user",cascade =CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Score> score;
 
+    public Integer getPassword() {
+        return password;
+    }
+
+    public void setPassword(Integer password) {
+        this.password = password;
+    }
 
     public Integer getUserId() {
         return userId;

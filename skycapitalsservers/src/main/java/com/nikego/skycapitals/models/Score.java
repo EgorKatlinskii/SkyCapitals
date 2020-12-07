@@ -27,7 +27,6 @@ public class Score {
     @JoinColumn(name="user_id",insertable = false, updatable = false)
     private User user;
 
-
     public Score(){}
 
     public Score(@NotNull Integer userId, @NotNull Integer scoreNumber, @NotNull List<Card> card) {
