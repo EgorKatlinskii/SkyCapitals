@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.AbstractMap;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class UserController {
@@ -24,8 +25,8 @@ public class UserController {
     @GetMapping(value = "/authorization/{ostoffice}/{password}", produces = "application/json")
     @ResponseBody
     public ResponseEntity<?> authorization(@PathVariable(name="ostoffice") String ostoffice,@PathVariable(name="password") Integer password) {
-        final User user = userService.accountVerification(ostoffice, password);
-        return user!=null
+        final Optional<User> user = userService.accountVerification(ostoffice, password);
+        return user.isPresent()
                 ? ResponseEntity.status(HttpStatus.OK).body(user)
                 : ResponseEntity.status(HttpStatus.NOT_FOUND).
                 body(new AbstractMap.SimpleEntry<>("СтатусОперации:", "Ошибка!"));

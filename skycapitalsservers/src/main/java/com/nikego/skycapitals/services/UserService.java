@@ -3,11 +3,12 @@ package com.nikego.skycapitals.services;
 import com.nikego.skycapitals.models.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
 
 
-        User accountVerification(String ostoffice,Integer password);
+        Optional<User> accountVerification(String ostoffice, Integer password);
         /**
          * Создает нового клиента
          * @param client - клиент для создания
