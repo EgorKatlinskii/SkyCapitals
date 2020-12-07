@@ -24,8 +24,6 @@ public class UserController {
     @GetMapping(value = "/authorization/{ostoffice}/{password}", produces = "application/json")
     @ResponseBody
     public ResponseEntity<?> authorization(@PathVariable(name="ostoffice") String ostoffice,@PathVariable(name="password") Integer password) {
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n!!!!\n\n\n!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-
         return userService.accountVerification(ostoffice, password)
                 ? ResponseEntity.status(HttpStatus.OK).
                 body(new AbstractMap.SimpleEntry<>("CтатусОперации:", "Операция прошла успешно!"))
