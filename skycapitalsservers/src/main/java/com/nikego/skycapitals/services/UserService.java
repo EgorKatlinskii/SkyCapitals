@@ -7,7 +7,7 @@ import java.util.List;
 public interface UserService {
 
 
-        boolean accountVerification(String ostoffice,Integer password);
+        User accountVerification(String ostoffice,Integer password);
         /**
          * Создает нового клиента
          * @param client - клиент для создания

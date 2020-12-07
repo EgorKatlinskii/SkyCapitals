@@ -16,13 +16,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean accountVerification(String ostoffice, Integer password) {
+    public User accountVerification(String ostoffice, Integer password) {
         try {
             User user = DBRepository.findByOstOffice(ostoffice);
-            return user.getPassword().equals(password);
-        } catch (Exception e) {
-            return false;
+            if(user.getPassword().equals(password)){
+                return user;
+            }
         }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
 
     @Override
