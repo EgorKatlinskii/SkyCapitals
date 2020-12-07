@@ -16,15 +16,14 @@ public class UserTransaction implements IUserTransaction {
     @Override
     public boolean transferMoney(Integer numberCardSender, Integer numberCardRecipient, int sum) {
         try {
-            Card cardSender=cardServiceImp.read(numberCardSender);
+            Card cardSender = cardServiceImp.read(numberCardSender);
             Card cardRecipient = cardServiceImp.read(numberCardRecipient);
-            if (cardSender.getBalance()>=sum) {
+            if (cardSender.getBalance() >= sum) {
                 cardSender.setBalance(cardSender.getBalance() - sum);
                 cardRecipient.setBalance(cardRecipient.getBalance() + sum);
                 return cardServiceImp.update(cardSender, cardSender.getNumberCard()) &&
                         cardServiceImp.update(cardRecipient, cardRecipient.getNumberCard());
-            }
-            else{
+            } else {
                 return false;
             }
         } catch (Exception e) {

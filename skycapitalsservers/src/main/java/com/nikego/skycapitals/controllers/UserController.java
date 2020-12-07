@@ -21,6 +21,17 @@ public class UserController {
     }
 
     /*успешный логин =вся инфа*/
+    @GetMapping(value = "/authorization/{ostoffice}/{password}", produces = "application/json")
+    @ResponseBody
+    public ResponseEntity<?> authorization(@PathVariable(name="ostoffice") String ostoffice,@PathVariable(name="password") Integer password) {
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n!!!!\n\n\n!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
+        return userService.accountVerification(ostoffice, password)
+                ? ResponseEntity.status(HttpStatus.OK).
+                body(new AbstractMap.SimpleEntry<>("CтатусОперации:", "Операция прошла успешно!"))
+                : ResponseEntity.status(HttpStatus.NOT_FOUND).
+                body(new AbstractMap.SimpleEntry<>("СтатусОперации:", "Ошибка!"));
+    }
 
     @GetMapping(value = "/users", consumes = "application/json", produces = "application/json")
     @ResponseBody
@@ -39,7 +50,8 @@ public class UserController {
             userService.create(user);
             return ResponseEntity.status(HttpStatus.OK).body(user);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new AbstractMap.SimpleEntry<>("ПричинаОтказа:", "Данный аккаунт уже существует!"));
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).
+                    body(new AbstractMap.SimpleEntry<>("ПричинаОтказа:", "Данный аккаунт уже существует!"));
         }
     }
 

@@ -16,12 +16,24 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public boolean accountVerification(String ostoffice, Integer password) {
+        try {
+            User user = DBRepository.findByOstOffice(ostoffice);
+            return user.getPassword().equals(password);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    @Override
     public List<User> readAll() {
         return DBRepository.findAll();
     }
 
     @Override
-    public void create(User user) throws Exception{ DBRepository.save(user); }
+    public void create(User user) throws Exception {
+        DBRepository.save(user);
+    }
 
     @Override
     public User read(int id) {

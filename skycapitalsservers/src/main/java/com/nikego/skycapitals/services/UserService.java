@@ -5,10 +5,14 @@ import com.nikego.skycapitals.models.User;
 import java.util.List;
 
 public interface UserService {
+
+
+        boolean accountVerification(String ostoffice,Integer password);
         /**
          * Создает нового клиента
          * @param client - клиент для создания
          */
+
 
         void create(User client) throws Exception;
 
