@@ -66,6 +66,4 @@ public class User {
     public void setOstOffice(String ostOffice) {
         this.ostOffice = ostOffice;
     }
-
-
 }

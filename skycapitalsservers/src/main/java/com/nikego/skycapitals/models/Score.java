@@ -28,6 +28,8 @@ public class Score {
     private User user;
 
 
+    public Score(){}
+
     public Score(@NotNull Integer userId, @NotNull Integer scoreNumber, @NotNull List<Card> card) {
         this.userId = userId;
         this.scoreNumber = scoreNumber;
