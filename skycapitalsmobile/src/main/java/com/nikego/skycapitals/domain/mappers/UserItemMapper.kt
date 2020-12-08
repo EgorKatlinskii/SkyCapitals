@@ -13,7 +13,7 @@ object UserItemMapper : BaseMapper<User, UserItem> {
         type.run {
             UserItem(
                 name = "$userName $userSurname",
-                scores = scores.map { score ->
+                scores = scores?.map { score ->
                     ScoreItem(score.scoreNumber, score.currency, score.bankCards.map {
                         BankCardItem(
                             it.numberCard.toLong(),
@@ -22,7 +22,7 @@ object UserItemMapper : BaseMapper<User, UserItem> {
                             it.balance
                         )
                     })
-                }
+                } ?: emptyList()
             )
         }
 }

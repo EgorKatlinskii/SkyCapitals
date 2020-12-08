@@ -1,16 +1,18 @@
 package com.nikego.skycapitals.network.retrofit
 
 import com.nikego.skycapitals.data.User
-import com.nikego.skycapitals.data.skycapitalsserver.UserLogin
+import com.nikego.skycapitals.data.skycapitalsserver.UserRegister
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 
 interface SkyCapitalsApiService {
 
     @POST("create")
-    suspend fun registerAccount(@Body user: User)
+    suspend fun registerUser(@Body user: UserRegister): User
 
-    @POST("login")
-    suspend fun loginUser(@Body userLogin: UserLogin): User
+    @GET("authorization/{email}/{password}")
+    suspend fun loginUser(@Path("email") email: String, @Path("password") password: Int): User
 }

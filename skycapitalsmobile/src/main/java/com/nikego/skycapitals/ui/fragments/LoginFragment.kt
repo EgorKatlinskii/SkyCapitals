@@ -30,7 +30,7 @@ class LoginFragment(viewModelFactory: ViewModelProvider.Factory) : Fragment() {
             btnLogin.setOnClickListener {
                 loginViewModel.login(
                     loginEmailEditText.text.toString(),
-                    loginPasswordEditText.text.toString()
+                    loginPasswordEditText.text.toString().toInt()
                 )
             }
         }
@@ -46,13 +46,12 @@ class LoginFragment(viewModelFactory: ViewModelProvider.Factory) : Fragment() {
                 }
             }
 
-            accessGiven.observe(viewLifecycleOwner) { event ->
+            userId.observe(viewLifecycleOwner) { event ->
                 event?.getContentIfNotHandled()?.let {
-                    findNavController().navigate(
-                        AuthFragmentDirections.actionAuthFragmentToBalanceFragment2(
-                            it.userId
+                    findNavController()
+                        .navigate(
+                            AuthFragmentDirections.actionAuthFragmentToBalanceFragment2(it)
                         )
-                    )
                 }
             }
         }

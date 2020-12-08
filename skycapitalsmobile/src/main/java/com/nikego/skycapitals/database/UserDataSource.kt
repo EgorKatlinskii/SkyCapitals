@@ -10,8 +10,9 @@ class UserDataSource @Inject constructor(private val userDao: UserDao) {
     suspend fun addUser(user: User) =
         try {
             userDao.insertUser(user)
+            Result.Success(user)
         } catch (t: Throwable) {
-            false
+            Result.Error(t)
         }
 
     suspend fun updateUser(user: User) =

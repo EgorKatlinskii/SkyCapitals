@@ -22,7 +22,7 @@ class RetrofitModule {
     @Provides
     @Singleton
     fun provideSkyCapitalsApiService(moshi: Moshi): SkyCapitalsApiService = Retrofit.Builder()
-            .baseUrl("http://localhost:8081/")
+            .baseUrl("http://192.168.100.3:8081/")
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
             .create(SkyCapitalsApiService::class.java)
