@@ -45,7 +45,7 @@ class RegistrationFragment(viewModelFactory: ViewModelProvider.Factory) : Fragme
             userId.observe(viewLifecycleOwner) { event ->
                 event?.getContentIfNotHandled()?.let {
                     findNavController()
-                        .navigate(AuthFragmentDirections.actionAuthFragmentToBalanceFragment2(it))
+                        .navigate(AuthFragmentDirections.actionAuthFragmentToBalanceFragment(it))
                 }
             }
             errorMsg.observe(viewLifecycleOwner) { event ->

@@ -15,14 +15,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.nikego.skycapitals.databinding.FragmentBalanceBinding
 import com.nikego.skycapitals.di.Injectable
 import com.nikego.skycapitals.ui.adapters.ScoreItemAdapter
-import com.nikego.skycapitals.ui.adapters.ScoreItemListener
+import com.nikego.skycapitals.ui.listeners.BalanceListener
+import com.nikego.skycapitals.ui.listeners.ScoreItemListener
 import com.nikego.skycapitals.ui.viewmodels.BalanceViewModel
 import com.nikego.skycapitals.utils.SpringAddItemAnimator
 import com.nikego.skycapitals.vo.ScoreItem
 import javax.inject.Inject
 
 
-class BalanceFragment : Fragment(), ScoreItemListener, Injectable {
+class BalanceFragment : Fragment(), ScoreItemListener, BalanceListener, Injectable {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -43,6 +44,7 @@ class BalanceFragment : Fragment(), ScoreItemListener, Injectable {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentBalanceBinding.inflate(inflater).apply {
+            listener = this@BalanceFragment
             itemScoreView.run {
                 adapter = scoreItemAdapter
                 itemAnimator = SpringAddItemAnimator()
@@ -78,5 +80,13 @@ class BalanceFragment : Fragment(), ScoreItemListener, Injectable {
                 item.scoreNumber
             )
         )
+    }
+
+    override fun onNewTransactionClicked(label: String) {
+        Toast.makeText(context, label, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onNewScoreClicked(label: String) {
+        Toast.makeText(context, label, Toast.LENGTH_SHORT).show()
     }
 }

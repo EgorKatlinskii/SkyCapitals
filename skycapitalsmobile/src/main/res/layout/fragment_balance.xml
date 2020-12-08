@@ -6,6 +6,10 @@
     <data>
 
         <variable
+            name="listener"
+            type="com.nikego.skycapitals.ui.listeners.BalanceListener" />
+
+        <variable
             name="user"
             type="com.nikego.skycapitals.vo.UserItem" />
     </data>
@@ -49,6 +53,48 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/card_background"
             bind:listitem="@layout/item_score" />
+
+        <com.github.clans.fab.FloatingActionMenu
+            android:id="@+id/score_actions_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            app:fab_colorNormal="@color/colorPrimaryDark"
+            app:fab_colorPressed="@color/colorPrimary"
+            app:fab_colorRipple="@color/colorPrimaryLight"
+            app:layout_constraintBottom_toBottomOf="@id/item_score_view"
+            app:layout_constraintEnd_toEndOf="@id/item_score_view"
+            app:menu_colorNormal="@color/colorPrimaryDark"
+            app:menu_colorPressed="@color/colorPrimary"
+            app:menu_colorRipple="@color/colorPrimaryLight"
+            app:menu_labels_ellipsize="end"
+            app:menu_labels_singleLine="true">
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/action_payment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> listener.onNewTransactionClicked(user.name)}"
+                android:src="@drawable/ic_payment"
+                app:fab_colorNormal="@color/colorPrimaryDark"
+                app:fab_colorPressed="@color/colorPrimary"
+                app:fab_colorRipple="@color/colorPrimaryLight"
+                app:fab_label="New transaction"
+                app:fab_size="mini" />
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/action_add_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> listener.onNewScoreClicked(user.name)}"
+                android:src="@drawable/ic_usd"
+                app:fab_colorNormal="@color/colorPrimaryDark"
+                app:fab_colorPressed="@color/colorPrimary"
+                app:fab_colorRipple="@color/colorPrimaryLight"
+                app:fab_label="New score"
+                app:fab_size="mini" />
+
+        </com.github.clans.fab.FloatingActionMenu>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

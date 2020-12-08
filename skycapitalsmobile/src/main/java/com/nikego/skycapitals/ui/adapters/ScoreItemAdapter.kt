@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.nikego.skycapitals.databinding.ItemScoreBinding
+import com.nikego.skycapitals.ui.listeners.ScoreItemListener
 import com.nikego.skycapitals.vo.ScoreItem
 
 

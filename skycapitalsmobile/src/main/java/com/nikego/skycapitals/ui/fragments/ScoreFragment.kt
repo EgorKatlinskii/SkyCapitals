@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.nikego.skycapitals.databinding.FragmentScoreBinding
 import com.nikego.skycapitals.di.Injectable
 import com.nikego.skycapitals.ui.adapters.BankCardItemAdapter
-import com.nikego.skycapitals.ui.adapters.BankCardItemListener
+import com.nikego.skycapitals.ui.listeners.BankCardItemListener
 import com.nikego.skycapitals.ui.viewmodels.ScoreViewModel
 import com.nikego.skycapitals.utils.SpringAddItemAnimator
 import com.nikego.skycapitals.vo.BankCardItem

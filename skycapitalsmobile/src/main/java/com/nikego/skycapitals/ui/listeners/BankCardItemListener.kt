@@ -1,4 +1,4 @@
-package com.nikego.skycapitals.ui.adapters
+package com.nikego.skycapitals.ui.listeners
 
 import com.nikego.skycapitals.vo.BankCardItem
 

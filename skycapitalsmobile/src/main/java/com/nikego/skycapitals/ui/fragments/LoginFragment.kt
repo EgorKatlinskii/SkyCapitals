@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.nikego.skycapitals.databinding.FragmentLoginBinding
 import com.nikego.skycapitals.ui.viewmodels.LoginViewModel
+import com.nikego.skycapitals.utils.extensions.hideKeyboard
 
 
 class LoginFragment(viewModelFactory: ViewModelProvider.Factory) : Fragment() {
@@ -49,9 +50,8 @@ class LoginFragment(viewModelFactory: ViewModelProvider.Factory) : Fragment() {
             userId.observe(viewLifecycleOwner) { event ->
                 event?.getContentIfNotHandled()?.let {
                     findNavController()
-                        .navigate(
-                            AuthFragmentDirections.actionAuthFragmentToBalanceFragment2(it)
-                        )
+                        .navigate(AuthFragmentDirections.actionAuthFragmentToBalanceFragment(it))
+                    binding.root.hideKeyboard()
                 }
             }
         }
