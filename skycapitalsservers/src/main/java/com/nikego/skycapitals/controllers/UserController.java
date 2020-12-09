@@ -21,11 +21,12 @@ public class UserController {
         this.userService = userService;
     }
 
+
     /*успешный логин =вся инфа*/
     @GetMapping(value = "/authorization/{ostoffice}/{password}", produces = "application/json")
     @ResponseBody
     public ResponseEntity<?> authorization(@PathVariable(name="ostoffice") String ostoffice,@PathVariable(name="password") Integer password) {
-        final Optional<User> user = userService.accountVerification(ostoffice, password);
+        final Optional<?> user = userService.accountVerification(ostoffice, password);
         return user.isPresent()
                 ? ResponseEntity.status(HttpStatus.OK).body(user)
                 : ResponseEntity.status(HttpStatus.NOT_FOUND).

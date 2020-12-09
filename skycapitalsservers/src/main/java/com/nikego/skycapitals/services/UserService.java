@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface UserService {
 
 
-        Optional<User> accountVerification(String ostoffice, Integer password);
+        Optional<?> accountVerification(String ostoffice, Integer password);
         /**
          * Создает нового клиента
          * @param client - клиент для создания

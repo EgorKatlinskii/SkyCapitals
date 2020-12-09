@@ -14,7 +14,7 @@ public class Score {
     @NotNull
     private Integer userId;
 
-    @Column(name = "number_score")
+    @Column(name = "number_score",unique = true)
     private @NotNull Integer scoreNumber;
 
     @Column(name="name_card")
