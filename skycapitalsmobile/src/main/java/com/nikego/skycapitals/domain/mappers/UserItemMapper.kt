@@ -5,6 +5,7 @@ import com.nikego.skycapitals.data.User
 import com.nikego.skycapitals.vo.BankCardItem
 import com.nikego.skycapitals.vo.ScoreItem
 import com.nikego.skycapitals.vo.UserItem
+import java.util.*
 
 
 object UserItemMapper : BaseMapper<User, UserItem> {
@@ -17,7 +18,7 @@ object UserItemMapper : BaseMapper<User, UserItem> {
                     ScoreItem(score.scoreNumber, score.currency, score.bankCards.map {
                         BankCardItem(
                             it.numberCard.toLong(),
-                            "$userSurname $userName".toUpperCase(),
+                            "$userSurname $userName".toUpperCase(Locale.ROOT),
                             score.currency,
                             it.balance
                         )

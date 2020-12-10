@@ -12,4 +12,5 @@ interface UserRepository {
     suspend fun login(userLogin: UserLogin): Result<User>
     suspend fun getUserById(userId: Int): Result<User>
     suspend fun register(userRegister: UserRegister): Result<User>
+    suspend fun addScore(userId: Int): Result<User>
 }

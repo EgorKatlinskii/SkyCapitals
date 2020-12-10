@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_balanceFragment_to_scoreFragment"
             app:destination="@id/scoreFragment" />
+        <action
+            android:id="@+id/action_balanceFragment_to_transactionFragment2"
+            app:destination="@id/transactionFragment" />
     </fragment>
     <fragment
         android:id="@+id/scoreFragment"
@@ -33,6 +36,22 @@
         tools:layout="@layout/fragment_score">
         <argument
             android:name="scoreNumber"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_scoreFragment_to_transactionFragment"
+            app:destination="@id/transactionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/transactionFragment"
+        android:name="com.nikego.skycapitals.ui.fragments.TransactionFragment"
+        android:label="TransactionFragment"
+        tools:layout="@layout/fragment_transaction" >
+        <argument
+            android:name="scoreNumber"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="userId"
             app:argType="integer" />
     </fragment>
 </navigation>

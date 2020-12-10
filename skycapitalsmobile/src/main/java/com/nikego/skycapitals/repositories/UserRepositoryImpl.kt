@@ -1,5 +1,6 @@
 package com.nikego.skycapitals.repositories
 
+import com.nikego.skycapitals.data.Score
 import com.nikego.skycapitals.data.User
 import com.nikego.skycapitals.data.datatype.Result
 import com.nikego.skycapitals.data.skycapitalsserver.UserLogin
@@ -36,6 +37,23 @@ class UserRepositoryImpl @Inject constructor(
             when (it) {
                 is Result.Success -> it.let { userDataSource.addUser(it.data) }
                 is Result.Error -> it
+            }
+        }
+
+    override suspend fun addScore(userId: Int): Result<User> =
+        userDataSource.getSingleUserById(userId).let { resultUser ->
+            when (resultUser) {
+                is Result.Success -> resultUser.data.let { user ->
+                    skyCapitalsDataSource.addScore(user.email).let { resultScoreCreate ->
+                        when (resultScoreCreate) {
+                            is Result.Success -> userDataSource.addUser(
+                                user.copy(scores = user.scores + Score(resultScoreCreate.data.numberScore))
+                            )
+                            is Result.Error -> resultScoreCreate
+                        }
+                    }
+                }
+                is Result.Error -> resultUser
             }
         }
 }

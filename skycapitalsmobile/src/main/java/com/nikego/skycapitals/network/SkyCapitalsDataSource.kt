@@ -52,4 +52,14 @@ class SkyCapitalsDataSource @Inject constructor(private val skyCapitalsApiServic
             Log.e(SkyCapitalsDataSource::class.java.simpleName, t.stackTraceToString())
             Result.Error(t)
         }
+
+    suspend fun addScore(email: String) =
+        try {
+            skyCapitalsApiService.addScore(email).let {
+                Result.Success(it)
+            }
+        } catch (t: Throwable) {
+            Log.e(SkyCapitalsDataSource::class.java.simpleName, t.stackTraceToString())
+            Result.Error(t)
+        }
 }

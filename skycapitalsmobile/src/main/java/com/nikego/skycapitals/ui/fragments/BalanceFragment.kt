@@ -87,6 +87,6 @@ class BalanceFragment : Fragment(), ScoreItemListener, BalanceListener, Injectab
     }
 
     override fun onNewScoreClicked(label: String) {
-        Toast.makeText(context, label, Toast.LENGTH_SHORT).show()
+        balanceViewModel.addScore(navArgs.userId)
     }
 }

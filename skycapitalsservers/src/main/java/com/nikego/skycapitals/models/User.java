@@ -1,11 +1,19 @@
 package com.nikego.skycapitals.models;
 
 
-import javax.persistence.*;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -35,6 +43,10 @@ public class User {
     @NotBlank
     @NotEmpty(message = "Please provide a office!")
     private String ostOffice;
+
+    public List<Score> getScore() {
+        return score;
+    }
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Score> score;
