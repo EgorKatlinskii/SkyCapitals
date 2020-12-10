@@ -8,16 +8,17 @@ import java.util.*;
 @Table(name = "score")
 public class Score {
 
-    @Id
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_Id")
     @NotNull
     private Integer userId;
 
+    @Id
     @Column(name = "number_score",unique = true)
     private @NotNull Integer scoreNumber;
 
-    @Column(name="name_card")
+
     @NotNull
     @OneToMany(mappedBy = "score",cascade = CascadeType.ALL)
     private List<Card> card;

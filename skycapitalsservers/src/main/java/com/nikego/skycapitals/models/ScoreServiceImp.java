@@ -9,8 +9,8 @@ import java.util.Optional;
 
 @Service
 public class ScoreServiceImp implements ScoreService {
-    private ScoreRepository scoreRepository;
-    private UserRepository userRepository;
+    private final ScoreRepository scoreRepository;
+    private final UserRepository userRepository;
     private final static int MININTNUMBER=  20000000;
     private final static int MAXINTNUMBER = 21474836;
 
@@ -24,12 +24,12 @@ public class ScoreServiceImp implements ScoreService {
         try{
             final User user =userRepository.findByOstOffice(ostOffice);
             final Score score = new Score();
-            score.setUser(user);
             /*добавление номера путем извлечения у user*/
             score.setUserId(user.getUserId());
+            int randomNumber = (int)(Math.random() * ((MAXINTNUMBER - MININTNUMBER) + 1)) + MININTNUMBER;
+            /*зацикливание*/
             while(true){
-                int randomNumber = MININTNUMBER + (int) (Math.random() * MAXINTNUMBER);
-                if(!scoreRepository.findByNumberScore(randomNumber)){
+                if(!scoreRepository.existsByScoreNumber(randomNumber)){
                     score.setScoreNumber(randomNumber);
                     scoreRepository.save(score);
                     return Optional.of(randomNumber);
@@ -37,6 +37,7 @@ public class ScoreServiceImp implements ScoreService {
             }
         }
         catch (Exception e){
+            System.out.println(e.getMessage());
             return Optional.empty();
         }
     }
