@@ -1,5 +1,7 @@
 package com.nikego.skycapitals.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 
@@ -13,10 +15,11 @@ public class Card {
     @Column(name = "name_card")
     private String nameCard;
 
-    @Column(name= "password")
+    @Column(name = "password")
     private int password;
 
     @Column(name = "number_score")
+    @JsonIgnore
     private Integer numberScore;
 
     @Column(name = "balance")
@@ -24,6 +27,7 @@ public class Card {
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "number_card", insertable = false, updatable = false)
+    @JsonIgnore
     private Score score;
 
     public int getPassword() {

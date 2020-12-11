@@ -1,10 +1,7 @@
 package com.nikego.skycapitals.network
 
 import android.util.Log
-import com.nikego.skycapitals.data.BankCard
-import com.nikego.skycapitals.data.Currency
-import com.nikego.skycapitals.data.Score
-import com.nikego.skycapitals.data.User
+import com.nikego.skycapitals.data.*
 import com.nikego.skycapitals.data.datatype.Result
 import com.nikego.skycapitals.data.skycapitalsserver.UserLogin
 import com.nikego.skycapitals.data.skycapitalsserver.UserRegister
@@ -56,6 +53,16 @@ class SkyCapitalsDataSource @Inject constructor(private val skyCapitalsApiServic
     suspend fun addScore(email: String) =
         try {
             skyCapitalsApiService.addScore(email).let {
+                Result.Success(it)
+            }
+        } catch (t: Throwable) {
+            Log.e(SkyCapitalsDataSource::class.java.simpleName, t.stackTraceToString())
+            Result.Error(t)
+        }
+
+    suspend fun addBankCard(cardType: CardType, scoreNumber: Int) =
+        try {
+            skyCapitalsApiService.addBankCard(cardType.type, scoreNumber).let {
                 Result.Success(it)
             }
         } catch (t: Throwable) {

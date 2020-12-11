@@ -1,5 +1,6 @@
 package com.nikego.skycapitals.network.retrofit
 
+import com.nikego.skycapitals.data.BankCard
 import com.nikego.skycapitals.data.User
 import com.nikego.skycapitals.data.skycapitalsserver.ScoreCreate
 import com.nikego.skycapitals.data.skycapitalsserver.UserRegister
@@ -19,4 +20,10 @@ interface SkyCapitalsApiService {
 
     @POST("create/score/{email}")
     suspend fun addScore(@Path("email") email: String): ScoreCreate
+
+    @GET("create/card/{cardType}/{scoreNumber}")
+    suspend fun addBankCard(
+        @Path("cardType") cardType: String,
+        @Path("scoreNumber") scoreNumber: Int
+    ): BankCard
 }

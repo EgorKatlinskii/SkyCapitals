@@ -1,5 +1,6 @@
 package com.nikego.skycapitals.repositories
 
+import com.nikego.skycapitals.data.CardType
 import com.nikego.skycapitals.data.Score
 import com.nikego.skycapitals.data.User
 import com.nikego.skycapitals.data.datatype.Result
@@ -54,6 +55,35 @@ class UserRepositoryImpl @Inject constructor(
                     }
                 }
                 is Result.Error -> resultUser
+            }
+        }
+
+    override suspend fun addBankCard(cardType: CardType, scoreNumber: Int): Result<User> =
+        userDataSource.getUsers().let { resultUsers ->
+            when (resultUsers) {
+                is Result.Success -> resultUsers.data.find {
+                    it.scores.map { it.scoreNumber }.contains(scoreNumber)
+                }?.let { user ->
+                    user.scores.find {
+                        it.scoreNumber == scoreNumber
+                    }?.let { score ->
+                        skyCapitalsDataSource.addBankCard(cardType, scoreNumber)
+                            .let { resultBankCard ->
+                                when (resultBankCard) {
+                                    is Result.Success -> {
+                                        val scores = user.scores.toMutableList().apply {
+                                            remove(score)
+                                            add(score.copy(bankCards = score.bankCards + resultBankCard.data))
+                                        }.toList()
+
+                                        userDataSource.addUser(user.copy(scores = scores))
+                                    }
+                                    is Result.Error -> resultBankCard
+                                }
+                            }
+                    }
+                } ?: Result.Error(IllegalStateException("No score with number $scoreNumber in db"))
+                is Result.Error -> resultUsers
             }
         }
 }

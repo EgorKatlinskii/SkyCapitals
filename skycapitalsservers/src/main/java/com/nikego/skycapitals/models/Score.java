@@ -2,20 +2,9 @@ package com.nikego.skycapitals.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @Table(name = "score")
@@ -32,6 +21,10 @@ public class Score {
     @Column(name = "number_score",unique = true)
     private @NotNull Integer scoreNumber;
 
+
+    public List<Card> getCard() {
+        return card;
+    }
 
     @NotNull
     @OneToMany(mappedBy = "score",cascade = CascadeType.ALL)

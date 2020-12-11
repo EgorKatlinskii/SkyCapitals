@@ -5,7 +5,7 @@
     <Transition
         motion:constraintSetEnd="@id/end"
         motion:constraintSetStart="@id/start"
-        motion:duration="1000">
+        motion:duration="300">
         <OnSwipe
             motion:dragDirection="dragUp"
             motion:touchAnchorId="@+id/item_score_view"

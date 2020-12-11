@@ -1,5 +1,6 @@
 package com.nikego.skycapitals.repositories.base
 
+import com.nikego.skycapitals.data.CardType
 import com.nikego.skycapitals.data.User
 import com.nikego.skycapitals.data.datatype.Result
 import com.nikego.skycapitals.data.skycapitalsserver.UserLogin
@@ -13,4 +14,5 @@ interface UserRepository {
     suspend fun getUserById(userId: Int): Result<User>
     suspend fun register(userRegister: UserRegister): Result<User>
     suspend fun addScore(userId: Int): Result<User>
+    suspend fun addBankCard(cardType: CardType, scoreNumber: Int): Result<User>
 }

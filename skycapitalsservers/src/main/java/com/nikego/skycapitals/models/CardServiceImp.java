@@ -57,6 +57,7 @@ public class CardServiceImp implements CardService {
             }
         }
         catch (Exception e){
+            e.printStackTrace();
             return Optional.empty();
         }
     }
