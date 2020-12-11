@@ -26,9 +26,21 @@ public class Card {
     private Integer balance;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "number_card", insertable = false, updatable = false)
+    @JoinColumn(name = "number_score", insertable = false, updatable = false)
     @JsonIgnore
     private Score score;
+
+    public Card() {
+    }
+
+    public Card(long numberCard, String nameCard, int password, Integer numberScore, Integer balance, Score score) {
+        this.numberCard = numberCard;
+        this.nameCard = nameCard;
+        this.password = password;
+        this.numberScore = numberScore;
+        this.balance = balance;
+        this.score = score;
+    }
 
     public int getPassword() {
         return password;

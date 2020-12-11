@@ -22,10 +22,6 @@ public class Score {
     private @NotNull Integer scoreNumber;
 
 
-    public List<Card> getCard() {
-        return card;
-    }
-
     @NotNull
     @OneToMany(mappedBy = "score",cascade = CascadeType.ALL)
     private List<Card> card;
@@ -42,6 +38,10 @@ public class Score {
         this.userId = userId;
         this.scoreNumber = scoreNumber;
         this.card = card;
+    }
+
+    public List<Card> getCard() {
+        return card;
     }
 
     public int getUserId() {

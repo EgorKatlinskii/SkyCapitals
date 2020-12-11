@@ -37,12 +37,13 @@ public class CardController {
                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping(value = "/create/card/{nameString}/{id}")
+    @GetMapping(value = "/create/card/{nameString}/{scoreNumber}")
     @ResponseBody
     public ResponseEntity<?> create(@PathVariable (name = "nameString") String nameCard,
-                                    @PathVariable(name="id") int id){
+                                    @PathVariable(name="scoreNumber") int scoreNumber){
         try{
-            final Card card = (Card)(cardService.create(nameCard,id).get());
+            System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            final Card card = (Card)(cardService.create(nameCard,scoreNumber).get());
             return ResponseEntity.status(HttpStatus.OK).body(card);
         }
         catch(Exception e) {

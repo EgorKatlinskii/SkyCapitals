@@ -37,15 +37,15 @@ public class CardServiceImp implements CardService {
     }
 
     @Override
-    public Optional<Card> create(String nameCard,int id){
+    public Optional<Card> create(String nameCard,int scoreNumber){
         try{
-            final Score score=scoreRepository.findByscoreNumber(id);
+            final Score score=scoreRepository.findByscoreNumber(scoreNumber);
             final Card card=new Card();
             long randomNumberCard;
             int randomPassword = (int)(Math.random() * ((MAXNUMBERPASSWORD - MINNUMBERPASSWORD) + 1)) + MINNUMBERPASSWORD;
             while(true){
                 randomNumberCard = (long)(Math.random() * ((MAXINTNUMBER - MININTNUMBER) + 1)) + MININTNUMBER;
-                if(!cardRepository.existsByNameCard(nameCard)){
+                if(!cardRepository.existsByNumberCard(randomNumberCard)){
                     card.setNameCard(nameCard);
                     card.setNumberCard(randomNumberCard);
                     card.setBalance(0);
