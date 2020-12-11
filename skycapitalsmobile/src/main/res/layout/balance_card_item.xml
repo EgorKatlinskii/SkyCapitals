@@ -34,7 +34,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/accountbalance"
+                    android:id="@+id/account_balance"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -55,14 +55,15 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="16dp"
                     android:fontFamily="@font/bold"
+                    android:text="$ 0"
                     android:textColor="@color/colorPrimary"
                     android:textSize="26sp"
                     app:currency="@{Currency.USD}"
-                    app:layout_constraintStart_toStartOf="@+id/accountbalance"
-                    app:layout_constraintTop_toBottomOf="@+id/accountbalance"
+                    app:layout_constraintStart_toStartOf="@+id/account_balance"
+                    app:layout_constraintTop_toBottomOf="@+id/account_balance"
                     app:layout_constraintVertical_bias="0.0"
                     app:scores="@{user.scores}"
-                    tools:text="$32,550" />
+                    tools:text="$ 32,550" />
 
                 <TextView
                     android:id="@+id/cents_usd"
@@ -86,6 +87,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="16dp"
                     android:fontFamily="@font/bold"
+                    android:text="€ 0"
                     android:textColor="@color/colorPrimary"
                     android:textSize="26sp"
                     app:currency="@{Currency.EUR}"
@@ -93,7 +95,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/balance_usd"
                     app:layout_constraintVertical_bias="0.0"
                     app:scores="@{user.scores}"
-                    tools:text="€32,550" />
+                    tools:text="€ 32,550" />
 
                 <TextView
                     android:id="@+id/cents_euro"
@@ -117,6 +119,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="16dp"
                     android:fontFamily="@font/bold"
+                    android:text="Br 0"
                     android:textColor="@color/colorPrimary"
                     android:textSize="26sp"
                     app:currency="@{Currency.BYN}"
@@ -125,7 +128,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/balance_euro"
                     app:layout_constraintVertical_bias="0.0"
                     app:scores="@{user.scores}"
-                    tools:text="Br32,550" />
+                    tools:text="Br 32,550" />
 
                 <TextView
                     android:id="@+id/cents_byn"

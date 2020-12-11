@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="1000">
+        <OnSwipe
+            motion:dragDirection="dragUp"
+            motion:touchAnchorId="@+id/item_score_view"
+            motion:touchAnchorSide="top" />
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@id/card_background"
+            android:layout_height="200dp"
+            motion:layout_constraintTop_toTopOf="parent">
+
+        </Constraint>
+
+        <Constraint android:id="@id/account_balance">
+            <PropertySet android:alpha="1" />
+            <Layout
+                motion:layout_constraintEnd_toEndOf="@id/balance_card_item"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                motion:layout_constraintTop_toTopOf="@id/balance_card_item"
+                motion:layout_constraintStart_toStartOf="@id/balance_card_item"
+                android:layout_marginTop="16dp" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/balance_usd"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            motion:layout_constraintVertical_bias="0.0"
+            motion:layout_constraintTop_toBottomOf="@+id/account_balance"
+            motion:layout_constraintStart_toStartOf="@+id/account_balance"
+            android:layout_marginTop="8dp" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@id/card_background"
+            android:layout_height="0dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            motion:layout_constraintBottom_toTopOf="parent">
+
+        </Constraint>
+
+        <Constraint
+            android:id="@id/account_balance">
+            <PropertySet android:alpha="0" />
+            <Layout
+                motion:layout_constraintEnd_toEndOf="@id/balance_card_item"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                motion:layout_constraintTop_toTopOf="@id/balance_card_item"
+                motion:layout_constraintStart_toStartOf="@id/balance_card_item"
+                android:layout_marginTop="24dp"
+                motion:layout_constraintBottom_toTopOf="@id/balance_card_item" />
+        </Constraint>
+
+        <Constraint
+            android:id="@id/balance_usd"
+            motion:layout_constraintBottom_toBottomOf="@id/balance_card_item"
+            motion:layout_constraintEnd_toStartOf="@id/balance_euro"
+            motion:layout_constraintStart_toStartOf="@id/balance_card_item"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toTopOf="@id/balance_card_item">
+
+        </Constraint>
+
+        <Constraint
+            android:id="@id/balance_euro"
+            motion:layout_constraintBottom_toBottomOf="@id/balance_card_item"
+            motion:layout_constraintEnd_toStartOf="@id/balance_byn"
+            motion:layout_constraintStart_toEndOf="@id/balance_usd"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toTopOf="@id/balance_card_item">
+
+        </Constraint>
+
+        <Constraint
+            android:id="@id/balance_byn"
+            motion:layout_constraintBottom_toBottomOf="@id/balance_card_item"
+            motion:layout_constraintEnd_toEndOf="@id/balance_card_item"
+            motion:layout_constraintStart_toEndOf="@id/balance_euro"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toTopOf="@id/balance_card_item">
+
+        </Constraint>
+        <Constraint
+            android:id="@+id/item_score_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/balance_card_item"
+            motion:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+            android:id="@+id/balance_card_item"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="50dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+        <Constraint
+            android:id="@+id/cents_usd"
+            motion:layout_constraintStart_toEndOf="@+id/balance_usd"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="@+id/balance_usd"
+            motion:layout_constraintVertical_bias="1.0"
+            android:layout_marginStart="2dp"
+            motion:layout_constraintTop_toTopOf="@+id/balance_usd"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/cents_euro"
+            motion:layout_constraintStart_toEndOf="@+id/balance_euro"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="@+id/balance_euro"
+            motion:layout_constraintVertical_bias="1.0"
+            android:layout_marginStart="2dp"
+            motion:layout_constraintTop_toTopOf="@+id/balance_euro"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/cents_byn"
+            motion:layout_constraintStart_toEndOf="@+id/balance_byn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="@+id/balance_byn"
+            motion:layout_constraintVertical_bias="1.0"
+            android:layout_marginStart="2dp"
+            motion:layout_constraintTop_toTopOf="@+id/balance_byn"
+            android:alpha="0" />
+    </ConstraintSet>
+</MotionScene>

@@ -54,6 +54,7 @@ class BalanceFragment : Fragment(), ScoreItemListener, BalanceListener, Injectab
                     false
                 )
             }
+            scoreActionsFab.setClosedOnTouchOutside(true)
         }
         balanceViewModel.setUser(navArgs.userId)
         return binding.root

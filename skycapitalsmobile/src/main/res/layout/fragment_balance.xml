@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:bind="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <import type="com.nikego.skycapitals.data.Currency" />
 
         <variable
             name="listener"
@@ -14,9 +16,10 @@
             type="com.nikego.skycapitals.vo.UserItem" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.motion.widget.MotionLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layoutDescription="@xml/balance_motion">
 
         <ImageView
             android:id="@+id/card_background"
@@ -29,18 +32,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <include
+        <View
             android:id="@+id/balance_card_item"
-            layout="@layout/balance_card_item"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/card_background"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/rounded_corner"
             app:layout_constraintBottom_toBottomOf="@+id/card_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            bind:user="@{user}" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/item_score_view"
@@ -52,7 +56,7 @@
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/card_background"
-            bind:listitem="@layout/item_score" />
+            tools:listitem="@layout/item_score" />
 
         <com.github.clans.fab.FloatingActionMenu
             android:id="@+id/score_actions_fab"
@@ -93,8 +97,125 @@
                 app:fab_colorRipple="@color/colorPrimaryLight"
                 app:fab_label="New score"
                 app:fab_size="mini" />
-
         </com.github.clans.fab.FloatingActionMenu>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/account_balance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/regular"
+            android:text="Account Balance"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/balance_usd"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/bold"
+            android:gravity="center"
+            android:text="$ 0"
+            android:textColor="@color/colorPrimary"
+            android:textSize="26sp"
+            app:currency="@{Currency.USD}"
+            app:layout_constraintStart_toStartOf="@+id/account_balance"
+            app:layout_constraintTop_toBottomOf="@+id/account_balance"
+            app:layout_constraintVertical_bias="0.0"
+            app:scores="@{user.scores}"
+            tools:text="$ 32,550" />
+
+        <TextView
+            android:id="@+id/cents_usd"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:fontFamily="@font/lato"
+            android:text=".00"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/balance_usd"
+            app:layout_constraintStart_toEndOf="@+id/balance_usd"
+            app:layout_constraintTop_toTopOf="@+id/balance_usd"
+            app:layout_constraintVertical_bias="1.0"
+            tools:text=".66" />
+
+        <TextView
+            android:id="@+id/balance_euro"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/bold"
+            android:gravity="center"
+            android:text="€ 0"
+            android:textColor="@color/colorPrimary"
+            android:textSize="26sp"
+            app:currency="@{Currency.EUR}"
+            app:layout_constraintStart_toStartOf="@+id/balance_usd"
+            app:layout_constraintTop_toBottomOf="@+id/balance_usd"
+            app:layout_constraintVertical_bias="0.0"
+            app:scores="@{user.scores}"
+            tools:text="€ 32,550" />
+
+        <TextView
+            android:id="@+id/cents_euro"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:fontFamily="@font/lato"
+            android:text=".00"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/balance_euro"
+            app:layout_constraintStart_toEndOf="@+id/balance_euro"
+            app:layout_constraintTop_toTopOf="@+id/balance_euro"
+            app:layout_constraintVertical_bias="1.0"
+            tools:text=".66" />
+
+        <TextView
+            android:id="@+id/balance_byn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/bold"
+            android:gravity="center"
+            android:text="Br 0"
+            android:textColor="@color/colorPrimary"
+            android:textSize="26sp"
+            app:currency="@{Currency.BYN}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/balance_euro"
+            app:layout_constraintTop_toBottomOf="@+id/balance_euro"
+            app:layout_constraintVertical_bias="0.0"
+            app:scores="@{user.scores}"
+            tools:text="Br 32,550" />
+
+        <TextView
+            android:id="@+id/cents_byn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:fontFamily="@font/lato"
+            android:text=".00"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/balance_byn"
+            app:layout_constraintStart_toEndOf="@+id/balance_byn"
+            app:layout_constraintTop_toTopOf="@+id/balance_byn"
+            app:layout_constraintVertical_bias="1.0"
+            tools:text=".66" />
+
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>

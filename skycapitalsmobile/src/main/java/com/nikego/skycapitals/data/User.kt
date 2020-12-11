@@ -16,5 +16,5 @@ data class User(
     @Json(name = "score") val scores: List<Score> = emptyList()
 ) {
     @Ignore
-    val balance = scores?.sumOf { it.scoreBalance }
+    val balance = scores.sumOf { it.scoreBalance }
 }
