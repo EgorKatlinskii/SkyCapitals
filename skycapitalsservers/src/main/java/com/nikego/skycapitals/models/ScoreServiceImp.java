@@ -24,12 +24,12 @@ public class ScoreServiceImp implements ScoreService {
         try{
             final User user =userRepository.findByOstOffice(ostOffice);
             final Score score = new Score();
-            /*добавление номера путем извлечения у user*/
-            score.setUserId(user.getUserId());
-            int randomNumber = (int)(Math.random() * ((MAXINTNUMBER - MININTNUMBER) + 1)) + MININTNUMBER;
+            int randomNumber;
             /*зацикливание*/
             while(true){
+                randomNumber = (int)(Math.random() * ((MAXINTNUMBER - MININTNUMBER) + 1)) + MININTNUMBER;
                 if(!scoreRepository.existsByScoreNumber(randomNumber)){
+                    score.setUserId(user.getUserId());
                     score.setScoreNumber(randomNumber);
                     scoreRepository.save(score);
                     return Optional.of(randomNumber);

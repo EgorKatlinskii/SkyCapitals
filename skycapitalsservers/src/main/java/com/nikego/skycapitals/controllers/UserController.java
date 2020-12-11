@@ -21,7 +21,6 @@ public class UserController {
         this.userService = userService;
     }
 
-
     /*успешный логин =вся инфа*/
     @GetMapping(value = "/authorization/{ostoffice}/{password}", produces = "application/json")
     @ResponseBody
@@ -40,7 +39,7 @@ public class UserController {
 
         return users != null && !users.isEmpty()
                 ? ResponseEntity.status(HttpStatus.OK).body(users)
-                : new ResponseEntity(HttpStatus.NOT_FOUND);
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @PostMapping(value = "/create", consumes = "application/json", produces = "application/json")
