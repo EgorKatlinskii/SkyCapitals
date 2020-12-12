@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.nikego.skycapitals.data.CardType
 import com.nikego.skycapitals.data.datatype.Result
 import com.nikego.skycapitals.domain.ScoreUseCase
 import com.nikego.skycapitals.utils.Event
@@ -27,6 +28,17 @@ class ScoreViewModel @Inject constructor(
     fun setScore(scoreNumber: Int) {
         viewModelScope.launch(ioDispatcher) {
             scoreUseCase.getCardsByScoreNumber(scoreNumber).let {
+                when (it) {
+                    is Result.Success -> _score.postValue(it.data)
+                    is Result.Error -> _errorMsg.postValue(Event(it.throwable.stackTraceToString()))
+                }
+            }
+        }
+    }
+
+    fun addBankCard(cardType: CardType, scoreNumber: Int) {
+        viewModelScope.launch(ioDispatcher) {
+            scoreUseCase.addBankCard(cardType, scoreNumber).let {
                 when (it) {
                     is Result.Success -> _score.postValue(it.data)
                     is Result.Error -> _errorMsg.postValue(Event(it.throwable.stackTraceToString()))

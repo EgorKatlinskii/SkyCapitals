@@ -3,6 +3,7 @@ package com.nikego.skycapitals.network.retrofit
 import com.nikego.skycapitals.data.BankCard
 import com.nikego.skycapitals.data.User
 import com.nikego.skycapitals.data.skycapitalsserver.ScoreCreate
+import com.nikego.skycapitals.data.skycapitalsserver.TransactionStatus
 import com.nikego.skycapitals.data.skycapitalsserver.UserRegister
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -26,4 +27,11 @@ interface SkyCapitalsApiService {
         @Path("cardType") cardType: String,
         @Path("scoreNumber") scoreNumber: Int
     ): BankCard
+
+    @POST("by_card_number/{cardNumber}/{receiverCardNumber}/{sum}")
+    suspend fun sendTransaction(
+        @Path("cardNumber") cardNumber: Long,
+        @Path("receiverCardNumber") receiverCardNumber: Long,
+        @Path("sum") sum: Int
+    ): TransactionStatus
 }

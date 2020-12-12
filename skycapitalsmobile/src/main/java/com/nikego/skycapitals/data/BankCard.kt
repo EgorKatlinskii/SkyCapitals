@@ -1,10 +1,12 @@
 package com.nikego.skycapitals.data
 
+import java.util.*
 
-data class BankCard(
+
+data class BankCard @JvmOverloads constructor(
     val numberCard: Long,
     val balance: Int,
     val password: Int,
     private val nameCard: String,
-    @Transient val cardType: CardType = CardType.valueOf(nameCard)
+    val cardType: CardType = CardType.valueOf(nameCard.toUpperCase(Locale.ROOT))
 )

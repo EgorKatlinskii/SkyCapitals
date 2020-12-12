@@ -5,45 +5,41 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nikego.skycapitals.data.datatype.Result
-import com.nikego.skycapitals.domain.TransactionUseCase
+import com.nikego.skycapitals.domain.BankCardUseCase
 import com.nikego.skycapitals.utils.Event
 import com.nikego.skycapitals.vo.BankCardItem
-import com.nikego.skycapitals.vo.ScoreItem
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
-class TransactionViewModel @Inject constructor(
-    private val transactionUseCase: TransactionUseCase,
+class BankCardViewModel @Inject constructor(
+    private val bankCardUseCase: BankCardUseCase,
     private val ioDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
-    private val _scores = MutableLiveData<List<ScoreItem>>()
-    val scores: LiveData<List<ScoreItem>> = _scores
-
-    private val _bankCards = MutableLiveData<List<BankCardItem>>()
-    val bankCards: LiveData<List<BankCardItem>> = _bankCards
+    private val _bankCard = MutableLiveData<BankCardItem>()
+    val bankCard: LiveData<BankCardItem> = _bankCard
 
     private val _errorMsg = MutableLiveData<Event<String>>()
     val errorMsg: LiveData<Event<String>> = _errorMsg
 
-    fun setScores(userId: Int) {
+    fun setBankCard(cardNumber: Long) {
         viewModelScope.launch(ioDispatcher) {
-            transactionUseCase.getScoresByUserId(userId).let {
+            bankCardUseCase.getBankCardByCardNumber(cardNumber).let {
                 when (it) {
-                    is Result.Success -> _scores.postValue(it.data)
+                    is Result.Success -> _bankCard.postValue(it.data)
                     is Result.Error -> _errorMsg.postValue(Event(it.throwable.stackTraceToString()))
                 }
             }
         }
     }
 
-    fun setCards(scoreNumber: Int) {
+    fun sendTransaction(cardNumber: Long, receiveCardNumber: Long, sum: Int) {
         viewModelScope.launch(ioDispatcher) {
-            transactionUseCase.getCardsByScoreNumber(scoreNumber).let {
+            bankCardUseCase.sendTransaction(cardNumber, receiveCardNumber, sum).let {
                 when (it) {
-                    is Result.Success -> _bankCards.postValue(it.data)
+                    is Result.Success -> _bankCard.postValue(it.data)
                     is Result.Error -> _errorMsg.postValue(Event(it.throwable.stackTraceToString()))
                 }
             }

@@ -14,9 +14,11 @@ class SkyCapitalsDataSource @Inject constructor(private val skyCapitalsApiServic
     suspend fun login(userLogin: UserLogin) =
         try {
             skyCapitalsApiService.loginUser(userLogin.email, userLogin.password).let {
+                Log.i(SkyCapitalsDataSource::class.java.simpleName, it.toString())
                 Result.Success(it)
             }
         } catch (t: Throwable) {
+            Log.e(SkyCapitalsDataSource::class.java.simpleName, t.stackTraceToString())
             Result.Error(t)
         }
 
@@ -43,6 +45,16 @@ class SkyCapitalsDataSource @Inject constructor(private val skyCapitalsApiServic
     suspend fun addBankCard(cardType: CardType, scoreNumber: Int) =
         try {
             skyCapitalsApiService.addBankCard(cardType.type, scoreNumber).let {
+                Result.Success(it)
+            }
+        } catch (t: Throwable) {
+            Log.e(SkyCapitalsDataSource::class.java.simpleName, t.stackTraceToString())
+            Result.Error(t)
+        }
+
+    suspend fun sendTransaction(cardNumber: Long, receiverCardNumber: Long, sum: Int) =
+        try {
+            skyCapitalsApiService.sendTransaction(cardNumber, receiverCardNumber, sum).let {
                 Result.Success(it)
             }
         } catch (t: Throwable) {

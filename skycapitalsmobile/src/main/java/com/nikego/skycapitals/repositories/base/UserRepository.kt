@@ -15,4 +15,7 @@ interface UserRepository {
     suspend fun register(userRegister: UserRegister): Result<User>
     suspend fun addScore(userId: Int): Result<User>
     suspend fun addBankCard(cardType: CardType, scoreNumber: Int): Result<User>
+    suspend fun getScoreByNumber(scoreNumber: Int): Result<User>
+    suspend fun getUserByCardNumber(cardNumber: Long): Result<User>
+    suspend fun sendTransaction(cardNumber: Long, receiveCardNumber: Long, sum: Int): Result<User>
 }

@@ -36,8 +36,8 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(TransactionViewModel::class)
-    abstract fun bindTransactionViewModel(transactionViewModel: TransactionViewModel): ViewModel
+    @ViewModelKey(BankCardViewModel::class)
+    abstract fun bindBankCardViewModel(bankCardViewModel: BankCardViewModel): ViewModel
 
     @Binds
     @Singleton

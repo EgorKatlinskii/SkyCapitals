@@ -13,17 +13,19 @@ object UserItemMapper : BaseMapper<User, UserItem> {
     override fun map(type: User): UserItem =
         type.run {
             UserItem(
+                userId = userId,
                 name = "$userName $userSurname",
-                scores = scores?.map { score ->
+                scores = scores.map { score ->
                     ScoreItem(score.scoreNumber, score.currency, score.bankCards.map {
                         BankCardItem(
                             it.numberCard.toLong(),
                             "$userSurname $userName".toUpperCase(Locale.ROOT),
                             score.currency,
+                            it.cardType,
                             it.balance
                         )
                     })
-                } ?: emptyList()
+                }
             )
         }
 }

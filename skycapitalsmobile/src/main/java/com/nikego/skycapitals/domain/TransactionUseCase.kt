@@ -32,4 +32,15 @@ class TransactionUseCase @Inject constructor(
                 is Result.Error -> it
             }
         }
+
+    suspend fun getScoreByNumber(scoreNumber: Int) =
+        userRepository.getScoreByNumber(scoreNumber).let {
+            when (it) {
+                is Result.Success -> UserItemMapper.map(it.data).scores
+                    .find { it.scoreNumber == scoreNumber }
+                    ?.let { Result.Success(it) }
+                    ?: Result.Error(IllegalStateException("no score $scoreNumber in db"))
+                is Result.Error -> it
+            }
+        }
 }

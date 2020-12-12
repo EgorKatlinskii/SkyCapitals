@@ -3,6 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="listener"
+            type="com.nikego.skycapitals.ui.listeners.TransactionListener" />
+
+        <variable
+            name="score"
+            type="com.nikego.skycapitals.vo.ScoreItem" />
+
+        <variable
+            name="bankCard"
+            type="com.nikego.skycapitals.vo.BankCardItem" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -16,10 +31,34 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/item_score_wrap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> listener.onScoreItemClicked()}">
+
+                <include
+                    android:id="@+id/item_score"
+                    layout="@layout/item_score"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:score="@{score}" />
+            </androidx.cardview.widget.CardView>
+
+            <include
+                android:id="@+id/item_bank_card"
+                layout="@layout/item_bank_card"
+                android:onClick="@{() -> listener.onBankCardItemClicked()}"
+                tools:bankCard="@{bankCard}" />
+
             <Spinner
                 android:id="@+id/spinner_score"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/blue_outline"
+                android:dropDownWidth="match_parent"
+                android:popupBackground="@drawable/blue_outline"
                 android:spinnerMode="dropdown"
                 tools:listitem="@layout/item_score" />
 
@@ -27,9 +66,30 @@
                 android:id="@+id/spinner_bank_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
                 android:spinnerMode="dropdown"
                 tools:listitem="@layout/item_bank_card" />
-        </LinearLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/receive_card_number_input_layout"
+                style="@style/TextInputLayoutAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/receive_card_number_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:hint="@string/receive_card_number"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btn_send_transaction"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/send" />
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -54,7 +54,6 @@ class BalanceFragment : Fragment(), ScoreItemListener, BalanceListener, Injectab
                     false
                 )
             }
-            scoreActionsFab.setClosedOnTouchOutside(true)
         }
         balanceViewModel.setUser(navArgs.userId)
         return binding.root
@@ -83,11 +82,7 @@ class BalanceFragment : Fragment(), ScoreItemListener, BalanceListener, Injectab
         )
     }
 
-    override fun onNewTransactionClicked(label: String) {
-        Toast.makeText(context, label, Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onNewScoreClicked(label: String) {
-        balanceViewModel.addScore(navArgs.userId)
+    override fun onNewScoreClicked(userId: Int) {
+        balanceViewModel.addScore(userId)
     }
 }
