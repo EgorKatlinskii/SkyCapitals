@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public interface CardService {
 
-    Card read(int id);
+    Card read(Long id);
 
     boolean update(Card card, long numberCard);
 

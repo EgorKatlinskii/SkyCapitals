@@ -3,6 +3,7 @@ package com.nikego.skycapitals.models;
 import com.nikego.skycapitals.repository.CardRepository;
 import com.nikego.skycapitals.repository.ScoreRepository;
 import com.nikego.skycapitals.services.CardService;
+
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -22,7 +23,7 @@ public class CardServiceImp implements CardService {
     }
 
     @Override
-    public Card read(int id ){
+    public Card read(Long id ){
         return cardRepository.getOne(id);
     }
 

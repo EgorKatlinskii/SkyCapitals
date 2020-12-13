@@ -19,7 +19,11 @@
     <androidx.constraintlayout.motion.widget.MotionLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutDescription="@xml/balance_motion">
+        app:layoutDescription="@xml/balance_motion"
+        app:paddingBottomSystemWindowInsets="@{true}"
+        app:paddingLeftSystemWindowInsets="@{true}"
+        app:paddingRightSystemWindowInsets="@{true}"
+        app:paddingTopSystemWindowInsets="@{true}">
 
         <ImageView
             android:id="@+id/card_background"

@@ -1,6 +1,7 @@
 package com.nikego.skycapitals.models;
 
 import com.nikego.skycapitals.services.IUserTransaction;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,7 +15,7 @@ public class UserTransaction implements IUserTransaction {
     /*1.проверка баланса, пополнение и списание счетов, возврат статуса*/
     /*перевод с карты на карту*/
     @Override
-    public boolean transferMoney(Integer numberCardSender, Integer numberCardRecipient, int sum) {
+    public boolean transferMoney(Long numberCardSender, Long numberCardRecipient, int sum) {
         try {
             Card cardSender = cardServiceImp.read(numberCardSender);
             Card cardRecipient = cardServiceImp.read(numberCardRecipient);

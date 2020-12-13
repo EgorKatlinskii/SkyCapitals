@@ -40,7 +40,7 @@ class BankCardItemAdapter(private val bankCardItemListener: BankCardItemListener
 
             fun create(parent: ViewGroup, bankCardItemListener: BankCardItemListener) =
                 ViewHolder(
-                    ItemBankCardBinding.inflate(LayoutInflater.from(parent.context)),
+                    ItemBankCardBinding.inflate(LayoutInflater.from(parent.context), parent, false),
                     bankCardItemListener
                 )
         }
