@@ -13,8 +13,11 @@ data class User(
     val userName: String,
     val userSurname: String,
     val password: Int,
-    @Json(name = "score") val scores: List<Score> = emptyList()
+    val score: List<Score>?
 ) {
     @Ignore
-    val balance = scores.sumOf { it.scoreBalance }
+    val balance = score?.sumOf { it.scoreBalance } ?: 0
+
+    @Ignore
+    val scores = score ?: emptyList()
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SkyCapitals E-Bank</string>
+    <string name="app_name">EBank</string>
     <string name="email">Email</string>
     <string name="log_in">Log In</string>
     <string name="registration">Registration</string>

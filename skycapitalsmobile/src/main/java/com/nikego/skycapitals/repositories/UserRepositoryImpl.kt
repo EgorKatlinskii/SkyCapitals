@@ -48,7 +48,7 @@ class UserRepositoryImpl @Inject constructor(
                     skyCapitalsDataSource.addScore(user.email).let { resultScoreCreate ->
                         when (resultScoreCreate) {
                             is Result.Success -> userDataSource.addUser(
-                                user.copy(scores = user.scores + Score(resultScoreCreate.data.numberScore))
+                                user.copy(score = user.scores + Score(resultScoreCreate.data.numberScore))
                             )
                             is Result.Error -> resultScoreCreate
                         }
@@ -74,7 +74,7 @@ class UserRepositoryImpl @Inject constructor(
                                         remove(score)
                                         add(score.copy(bankCards = score.bankCards + resultBankCard.data))
                                     }.toList().let {
-                                        userDataSource.addUser(user.copy(scores = it))
+                                        userDataSource.addUser(user.copy(score = it))
                                     }
                                     is Result.Error -> resultBankCard
                                 }
@@ -137,7 +137,7 @@ class UserRepositoryImpl @Inject constructor(
                                         }.toList()
                                     ).let {
                                         resultUser.data.copy(
-                                            scores = resultUser.data.scores.toMutableList().apply {
+                                            score = resultUser.data.scores.toMutableList().apply {
                                                 remove(oldScore)
                                                 add(it)
                                             }
