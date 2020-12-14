@@ -13,6 +13,7 @@ import com.nikego.skycapitals.databinding.FragmentCardBinding
 import com.nikego.skycapitals.di.Injectable
 import com.nikego.skycapitals.ui.listeners.BankCardListener
 import com.nikego.skycapitals.ui.viewmodels.BankCardViewModel
+import com.nikego.skycapitals.utils.BankCardTextWatcher
 import javax.inject.Inject
 
 class BankCardFragment : Fragment(), BankCardListener, Injectable {
@@ -34,6 +35,7 @@ class BankCardFragment : Fragment(), BankCardListener, Injectable {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentCardBinding.inflate(inflater).apply {
+            receiveCardNumber.addTextChangedListener(BankCardTextWatcher())
             listener = this@BankCardFragment
         }
         bankCardViewModel.setBankCard(navArgs.cardNumber)
@@ -57,7 +59,7 @@ class BankCardFragment : Fragment(), BankCardListener, Injectable {
         binding.run {
             bankCardViewModel.sendTransaction(
                 navArgs.cardNumber,
-                receiveCardNumber.text.toString().toLong(),
+                receiveCardNumber.text.toString().replace(" ", "").toLong(),
                 sumEditText.text.toString().toInt()
             )
         }

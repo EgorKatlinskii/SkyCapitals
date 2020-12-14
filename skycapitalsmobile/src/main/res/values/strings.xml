@@ -14,7 +14,8 @@
     <string name="ebank">EBank</string>
     <string name="receive_card_number">Receive card number</string>
     <string name="send">Send</string>
-    <string name="pin">PIN</string>
     <string name="add_score">Add score</string>
     <string name="add_card">Add card</string>
+    <string name="sum">Sum</string>
+    <string name="pin">PIN</string>
 </resources>

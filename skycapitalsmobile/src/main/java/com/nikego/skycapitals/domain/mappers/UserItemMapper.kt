@@ -18,7 +18,7 @@ object UserItemMapper : BaseMapper<User, UserItem> {
                 scores = scores.map { score ->
                     ScoreItem(score.scoreNumber, score.currency, score.bankCards.map {
                         BankCardItem(
-                            it.numberCard.toLong(),
+                            it.numberCard,
                             "$userSurname $userName".toUpperCase(Locale.ROOT),
                             score.currency,
                             it.cardType,

@@ -77,12 +77,28 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="8dp"
                 android:scaleType="centerCrop"
                 app:cardType="@{bankCard.cardType}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:src="@drawable/ic_visa" />
+
+            <TextView
+                android:id="@+id/card_balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/bold"
+                android:gravity="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="26sp"
+                app:balance="@{bankCard.balance}"
+                app:currency="@{bankCard.currency}"
+                app:layout_constraintBottom_toBottomOf="@id/card_type"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/card_type"
+                tools:text="$ 1324" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -94,7 +110,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="26dp"
             android:layout_marginEnd="16dp"
-            app:layout_constraintTop_toBottomOf="@id/card_background">
+            app:layout_constraintTop_toBottomOf="@id/card_background"
+            app:startIconDrawable="@drawable/ic_payment">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/receive_card_number"
@@ -107,19 +124,42 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/sum_input_layout"
             style="@style/TextInputLayoutAppearance"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintTop_toBottomOf="@id/receive_card_number_input_layout">
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@id/pin_input_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/receive_card_number_input_layout"
+            app:prefixText="@{bankCard.currency.sign}"
+            tools:prefixText="$">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/sum_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="@string/receive_card_number"
+                android:hint="@string/sum"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/pin_input_layout"
+            style="@style/TextInputLayoutAppearance"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/sum_input_layout"
+            app:layout_constraintTop_toBottomOf="@id/receive_card_number_input_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="@string/pin"
+                android:inputType="numberPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <Button
             android:id="@+id/btn_send_transaction"

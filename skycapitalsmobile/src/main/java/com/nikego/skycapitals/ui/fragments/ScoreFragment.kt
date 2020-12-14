@@ -94,7 +94,6 @@ class ScoreFragment : Fragment(), BankCardItemListener, ScoreListener, Injectabl
             .setTitle("Choose card type")
             .setSingleChoiceItems(cardTypes, 0) { _, i ->
                 selectedType = i
-                Toast.makeText(context, i.toString(), Toast.LENGTH_SHORT).show()
             }.setPositiveButton("OK") { _, _ ->
                 scoreViewModel.addBankCard(
                     CardType.valueOf(cardTypes[selectedType].toUpperCase(Locale.ROOT)), scoreNumber

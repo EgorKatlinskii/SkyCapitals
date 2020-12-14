@@ -21,7 +21,7 @@ class TransactionUseCase @Inject constructor(
         userRepository.getUsers().let {
             when (it) {
                 is Result.Success -> it.data.find {
-                    it.scores?.map { it.scoreNumber }?.contains(scoreNumber) ?: false
+                    it.scores.map { it.scoreNumber }.contains(scoreNumber)
                 }?.let {
                     UserItemMapper.map(it).scores.find {
                         it.scoreNumber == scoreNumber
